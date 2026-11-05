@@ -150,4 +150,22 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               {/* Status & Numeric Percentage */}
               <div className="flex justify-between items-center w-full text-[11px] sm:text-xs font-mono text-slate-400">
                 <span className="text-cyan-400 font-semibold tracking-wider">LOADING EXPERIENCE</span>
-                <span className="font-bold text-white tabular-nums">{progress
+                <span className="font-bold text-white tabular-nums">{progress}%</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Bottom Footer Info */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.6 }}
+            transition={{ delay: 0.9 }}
+            className="absolute bottom-6 sm:bottom-8 text-[10px] sm:text-xs font-mono tracking-widest text-slate-500 uppercase text-center px-4"
+          >
+            Computer Science Undergraduate &bull; Full Stack Developer
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import { BackgroundGlow } from './components/common/BackgroundGlow';
 import { Navbar } from './components/common/Navbar';
@@ -10,10 +10,16 @@ import { Research } from './components/sections/Research';
 import { ExperienceEdu } from './components/sections/ExperienceEdu';
 import { Contact } from './components/sections/Contact';
 import { Footer } from './components/common/Footer';
+import { Preloader } from './components/common/Preloader';
 
 export const App: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
   return (
     <ThemeProvider>
+      {/* Intro Name Splash Screen / Preloader */}
+      {loading && <Preloader onComplete={() => setLoading(false)} />}
+
       <div className="relative min-h-screen bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-slate-100 selection:bg-cyan-500 selection:text-white transition-colors duration-300">
         {/* Ambient Glowing Aura Background & Grids */}
         <BackgroundGlow />
