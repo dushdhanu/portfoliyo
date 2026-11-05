@@ -165,19 +165,20 @@ export const projects: Project[] = [
     isPlaceholder: true
   },
   {
-    id: "flutter-mobile-app",
-    title: "Flutter Mobile Application",
-    category: "Mobile",
-    description: "Modern, responsive cross-platform mobile client engineered with Flutter & Dart, emphasizing slick micro-interactions and seamless API consumption.",
+    id: "medscan-ai",
+    title: "MedScan AI - Intelligent Medicine Identifier & Healthcare Assistant",
+    category: "AI & Mobile Healthcare",
+    description: "An offline-first clinical assistant mobile app that identifies prescription medicines, blister packs, and dosages from camera photos using Google Gemini Vision AI, complete with bilingual Sinhala and English reporting.",
     highlights: [
-      "Fluid cross-platform user experience running natively on iOS and Android",
-      "Reactive state management and clean separation of concerns",
-      "Network caching and resilient offline state support"
+      "AI-powered visual analysis of medication blister packs, active ingredients, and safety warnings using Google Gemini 1.5 Flash",
+      "Bilingual real-time translation & Text-to-Speech (TTS) narration with native Sinhala (සිංහල) Unicode and English support",
+      "Offline SQLite medical record vault, persistent dosage reminder notifications, and an in-app emergency pharmacy directory",
+      "Interactive in-app clinical PDF report generator with high-resolution direct export and cross-platform sharing"
     ],
-    technologies: ["Flutter", "Dart", "REST API", "Material 3", "State Management"],
-    githubUrl: "https://github.com/dushdhanu/flutter-mobile-app", // [EDITABLE PLACEHOLDER]
-    liveUrl: "#project-preview-flutter",
-    isPlaceholder: true
+    technologies: ["Flutter", "Dart", "Google Gemini Vision AI", "SQLite", "Text-to-Speech", "PDF Generation", "Material 3"],
+    githubUrl: "https://github.com/dushdhanu/mediscan-ai-assistant",
+    liveUrl: "#project-preview-medscan",
+    isPlaceholder: false
   },
   {
     id: "future-projects",
