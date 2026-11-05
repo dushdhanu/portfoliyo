@@ -34,12 +34,17 @@ export interface SkillCategory {
 export interface Project {
   id: string;
   title: string;
-  category: 'Full Stack' | 'Backend API' | 'Mobile' | 'Upcoming';
+  category: string;
   description: string;
   highlights: string[];
   technologies: string[];
   githubUrl: string;
-  liveUrl: string;
+  liveUrl?: string;
+  stars?: number;
+  forks?: number;
+  updatedAt?: string;
+  primaryLanguage?: string;
+  isFeatured?: boolean;
   isPlaceholder?: boolean;
 }
 
@@ -72,4 +77,27 @@ export interface TimelineEntry {
 export interface NavLink {
   label: string;
   href: string;
+}
+
+export type CertificateCategory =
+  | 'All'
+  | 'Programming'
+  | 'Artificial Intelligence'
+  | 'Cybersecurity'
+  | 'Cloud Computing'
+  | 'Software Engineering'
+  | 'Other';
+
+export interface Certificate {
+  id: string;
+  title: string;
+  issuer: string;
+  issueDate: string;
+  credentialId?: string;
+  image?: string;
+  certificateUrl?: string;
+  verificationUrl?: string;
+  category: 'Programming' | 'Artificial Intelligence' | 'Cybersecurity' | 'Cloud Computing' | 'Software Engineering' | 'Other';
+  skills?: string[];
+  featured?: boolean;
 }

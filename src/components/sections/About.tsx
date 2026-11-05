@@ -1,8 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeader } from '../common/SectionHeader';
-import { personalInfo } from '../../data/portfolioData';
-import { Code, Cpu, Shield, Sparkles, MapPin, GraduationCap, Target, Lightbulb } from 'lucide-react';
+import { personalInfo } from '../../data/profile';
+import { 
+  Code, 
+  Cpu, 
+  Shield, 
+  Sparkles, 
+  MapPin, 
+  GraduationCap, 
+  Target, 
+  Lightbulb, 
+  Linkedin, 
+  Github, 
+  ExternalLink 
+} from 'lucide-react';
 
 export const About: React.FC = () => {
   return (
@@ -62,6 +74,30 @@ export const About: React.FC = () => {
                   </div>
                 </div>
               </div>
+
+              {/* LinkedIn & GitHub Direct Connect Action */}
+              <div className="mt-6 pt-4 border-t border-slate-200/80 dark:border-white/10 flex flex-col sm:flex-row items-center gap-2">
+                <a
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0077b5] hover:bg-[#006097] text-white text-xs font-bold shadow-md shadow-[#0077b5]/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                >
+                  <Linkedin className="w-4 h-4" />
+                  <span>Connect on LinkedIn</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+
+                <a
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl border border-slate-300 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:text-cyan-500 hover:border-cyan-500/40 text-xs font-semibold transition-all"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>GitHub</span>
+                </a>
+              </div>
             </div>
 
             {/* Core Passions Pills Bento */}
@@ -95,8 +131,8 @@ export const About: React.FC = () => {
             className="lg:col-span-7 flex flex-col justify-between space-y-6"
           >
             {/* Story Paragraphs */}
-            <div className="glass-card rounded-3xl p-8 border border-white/10 dark:border-white/10 space-y-4">
-              <div className="flex items-center gap-2 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-2">
+            <div className="glass-card rounded-3xl p-8 border border-slate-200/90 dark:border-white/10 space-y-4">
+              <div className="flex items-center gap-2 text-cyan-500 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-2">
                 <Lightbulb className="w-4 h-4" />
                 <span>The Story & Mindset</span>
               </div>
@@ -113,8 +149,8 @@ export const About: React.FC = () => {
 
             {/* 3 Pillars Bento Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="glass-card glass-card-hover rounded-2xl p-5 border border-white/10">
-                <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center mb-3">
+              <div className="glass-card glass-card-hover rounded-2xl p-5 border border-slate-200/80 dark:border-white/10">
+                <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 dark:text-cyan-400 flex items-center justify-center mb-3">
                   <Code className="w-5 h-5" />
                 </div>
                 <h4 className="text-sm font-bold text-slate-900 dark:text-white">
@@ -125,8 +161,8 @@ export const About: React.FC = () => {
                 </p>
               </div>
 
-              <div className="glass-card glass-card-hover rounded-2xl p-5 border border-white/10">
-                <div className="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400 flex items-center justify-center mb-3">
+              <div className="glass-card glass-card-hover rounded-2xl p-5 border border-slate-200/80 dark:border-white/10">
+                <div className="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-500 dark:text-violet-400 flex items-center justify-center mb-3">
                   <Cpu className="w-5 h-5" />
                 </div>
                 <h4 className="text-sm font-bold text-slate-900 dark:text-white">
@@ -137,8 +173,8 @@ export const About: React.FC = () => {
                 </p>
               </div>
 
-              <div className="glass-card glass-card-hover rounded-2xl p-5 border border-white/10">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-3">
+              <div className="glass-card glass-card-hover rounded-2xl p-5 border border-slate-200/80 dark:border-white/10">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 dark:text-emerald-400 flex items-center justify-center mb-3">
                   <Shield className="w-5 h-5" />
                 </div>
                 <h4 className="text-sm font-bold text-slate-900 dark:text-white">

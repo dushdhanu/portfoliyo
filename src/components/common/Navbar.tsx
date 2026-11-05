@@ -16,7 +16,17 @@ export const Navbar: React.FC = () => {
       setIsScrolled(window.scrollY > 20);
 
       // Section scroll spy
-      const sections = ['home', 'about', 'skills', 'projects', 'research', 'experience', 'contact'];
+      const sections = [
+        'home',
+        'about',
+        'skills',
+        'projects',
+        'certifications',
+        'github',
+        'research',
+        'experience',
+        'contact'
+      ];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
