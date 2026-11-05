@@ -301,3 +301,4 @@ export const generateResumePdf = async (data: ResumeData): Promise<void> => {
   // Trigger real browser download
   doc.save('Dushmanthi_Dhananjana_Resume.pdf');
 };
+
