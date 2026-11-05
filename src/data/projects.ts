@@ -104,3 +104,4 @@ export const projects: Project[] = [
     isPlaceholder: false
   }
 ];
+

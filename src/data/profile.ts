@@ -47,3 +47,4 @@ export const navLinks: NavLink[] = [
   { label: "Education & Exp", href: "#experience" },
   { label: "Contact", href: "#contact" }
 ];
+

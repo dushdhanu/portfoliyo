@@ -72,3 +72,4 @@ export const certifications: Certificate[] = [
     featured: true
   }
 ];
+

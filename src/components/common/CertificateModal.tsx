@@ -182,3 +182,4 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
     </AnimatePresence>
   );
 };
+
