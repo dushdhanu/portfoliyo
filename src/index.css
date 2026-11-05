@@ -32,27 +32,27 @@
 }
 
 @layer components {
-  /* Glassmorphism Styles */
+  /* Dynamic Responsive Glassmorphism Styles (Pristine Light & Cyber Dark) */
   .glass-card {
-    @apply bg-slate-900/60 dark:bg-navy-900/60 backdrop-blur-xl border border-white/10 dark:border-white/[0.08] shadow-2xl;
+    @apply bg-white/85 dark:bg-navy-900/75 backdrop-blur-xl border border-slate-200/90 dark:border-white/[0.08] shadow-lg shadow-slate-200/50 dark:shadow-[0_10px_35px_-5px_rgba(2,6,23,0.7)] text-slate-800 dark:text-slate-100;
   }
 
   .glass-card-hover {
-    @apply transition-all duration-300 hover:border-cyan-500/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] hover:-translate-y-1;
+    @apply transition-all duration-300 hover:border-cyan-500/50 dark:hover:border-cyan-400/40 hover:shadow-xl hover:shadow-cyan-500/10 dark:hover:shadow-[0_0_30px_rgba(6,182,212,0.18)] hover:-translate-y-1;
   }
 
   .glass-pill {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-3 py-1 text-xs font-medium tracking-wide;
+    @apply bg-slate-100/90 dark:bg-white/5 backdrop-blur-md border border-slate-200 dark:border-white/10 rounded-full px-3 py-1 text-xs font-semibold tracking-wide text-slate-700 dark:text-slate-300;
   }
 
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 via-blue-600 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-400;
   }
 
   .gradient-border-box {
     position: relative;
     border-radius: 1rem;
-    background: linear-gradient(to right, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
+    background: linear-gradient(to right, rgba(6, 182, 212, 0.3), rgba(139, 92, 246, 0.3));
     padding: 1px;
   }
 
@@ -82,5 +82,74 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Crystal-Clear Print / PDF Optimization Styles */
+/* Completely prevents mobile / desktop Print Spooler crashes by stripping GPU filters and animations */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide interactive web elements, backgrounds, orbs, nav, and modals during printing */
+  nav,
+  header,
+  footer,
+  button,
+  .no-print,
+  .fixed,
+  [aria-modal="true"] > div:first-child,
+  .animate-blob,
+  .animate-pulse,
+  .animate-spin-slow,
+  .bg-grid-pattern {
+    display: none !important;
+  }
+
+  /* Reset glassmorphism and backdrop-filters that cause Android print spooler crashes */
+  * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* If a dedicated printable CV exists, make it occupy the full clean page */
+  #printable-cv {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  #printable-cv * {
+    visibility: visible !important;
+  }
+
+  .page-break-before {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 }
