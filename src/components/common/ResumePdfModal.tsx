@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Printer, Download, Mail, Phone, MapPin, Globe, Github, Linkedin, Award, GraduationCap, Briefcase, Code, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
+import { X, Printer, Download, Mail, MapPin, Github, Linkedin, GraduationCap, Briefcase, Code, ShieldCheck, Sparkles } from 'lucide-react';
 import { personalInfo, projects, skillCategories, researchProject, timelineData } from '../../data/portfolioData';
 
 interface ResumePdfModalProps {

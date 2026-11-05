@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, FileText, Sparkles } from 'lucide-react';
-import { navLinks, personalInfo } from '../../data/portfolioData';
+import { navLinks } from '../../data/portfolioData';
 import { ThemeToggle } from './ThemeToggle';
 import { ResumePdfModal } from './ResumePdfModal';
 import { motion, AnimatePresence } from 'framer-motion';

@@ -4,7 +4,7 @@ import { SectionHeader } from '../common/SectionHeader';
 import { projects } from '../../data/portfolioData';
 import { Project } from '../../types/portfolio';
 import { PlaceholderModal } from '../common/PlaceholderModal';
-import { Github, ExternalLink, Code2, Sparkles, Layers, CheckCircle2 } from 'lucide-react';
+import { Github, ExternalLink, Code2, Layers, CheckCircle2 } from 'lucide-react';
 
 export const Projects: React.FC = () => {
   const [activeModal, setActiveModal] = useState<{

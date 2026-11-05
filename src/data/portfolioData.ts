@@ -167,7 +167,7 @@ export const projects: Project[] = [
   {
     id: "medscan-ai",
     title: "MedScan AI - Intelligent Medicine Identifier & Healthcare Assistant",
-    category: "AI & Mobile Healthcare",
+    category: "Mobile",
     description: "An offline-first clinical assistant mobile app that identifies prescription medicines, blister packs, and dosages from camera photos using Google Gemini Vision AI, complete with bilingual Sinhala and English reporting.",
     highlights: [
       "AI-powered visual analysis of medication blister packs, active ingredients, and safety warnings using Google Gemini 1.5 Flash",
