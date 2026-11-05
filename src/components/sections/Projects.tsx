@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '../common/SectionHeader';
 import { projects as curatedProjects } from '../../data/projects';
 import { Project } from '../../types/portfolio';
-import { PlaceholderModal } from '../common/PlaceholderModal';
 import { 
   Github, 
   ExternalLink, 
@@ -44,18 +43,6 @@ export const Projects: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All Projects');
   const [isSyncing, setIsSyncing] = useState<boolean>(false);
   const [lastSynced, setLastSynced] = useState<string | null>(null);
-
-  const [activeModal, setActiveModal] = useState<{
-    isOpen: boolean;
-    title: string;
-    description: string;
-    type: 'project-github' | 'project-demo';
-  }>({
-    isOpen: false,
-    title: '',
-    description: '',
-    type: 'project-demo'
-  });
 
   // Fetch and sync GitHub Public Repositories metadata
   useEffect(() => {
@@ -128,7 +115,7 @@ export const Projects: React.FC = () => {
               ],
               technologies: [r.language || 'Code', 'Git', 'GitHub'].filter(Boolean),
               githubUrl: r.html_url,
-              liveUrl: r.homepage || r.html_url,
+              liveUrl: r.homepage && r.homepage.trim().length > 0 && !r.homepage.includes('github.com') ? r.homepage : undefined,
               stars: r.stargazers_count,
               forks: r.forks_count,
               updatedAt: new Date(r.updated_at).toLocaleDateString(undefined, {
@@ -163,19 +150,6 @@ export const Projects: React.FC = () => {
   const filteredProjects = selectedCategory === 'All Projects'
     ? projectList
     : projectList.filter((p) => p.category === selectedCategory);
-
-  const handleOpenLiveDemo = (project: Project) => {
-    if (project.liveUrl && project.liveUrl.startsWith('http')) {
-      window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
-    } else {
-      setActiveModal({
-        isOpen: true,
-        title: `${project.title} - System Architecture`,
-        description: `This software project is hosted on GitHub. You can view its full source code, architecture, and setup instructions directly in its repository.`,
-        type: 'project-demo'
-      });
-    }
-  };
 
   return (
     <section id="projects" className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
@@ -359,15 +333,6 @@ export const Projects: React.FC = () => {
           </AnimatePresence>
         </div>
       </div>
-
-      {/* Interactive Modal */}
-      <PlaceholderModal
-        isOpen={activeModal.isOpen}
-        onClose={() => setActiveModal((prev) => ({ ...prev, isOpen: false }))}
-        title={activeModal.title}
-        description={activeModal.description}
-        itemType={activeModal.type}
-      />
     </section>
   );
 };

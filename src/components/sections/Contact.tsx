@@ -28,7 +28,7 @@ export const Contact: React.FC = () => {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'demo-notice'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'mailto-opened'>('idle');
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   const validate = (): boolean => {
@@ -55,11 +55,16 @@ export const Contact: React.FC = () => {
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Honest handling: simulate submission with feedback explaining backend integration
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('demo-notice');
-    }, 1200);
+    // Honest handling: construct a real mailto link and launch native email client
+    const mailtoLink = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
+      `[Portfolio Inquiry] ${formData.subject}`
+    )}&body=${encodeURIComponent(
+      `Sender: ${formData.name}\nContact Email: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`;
+
+    window.location.href = mailtoLink;
+    setIsSubmitting(false);
+    setSubmitStatus('mailto-opened');
   };
 
   const copyEmailToClipboard = () => {
@@ -200,30 +205,40 @@ export const Contact: React.FC = () => {
                 Fill out the form below to initiate a conversation or project discussion.
               </p>
 
-              {submitStatus === 'demo-notice' ? (
+              {submitStatus === 'mailto-opened' ? (
                 <div className="p-6 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-slate-200 space-y-4">
                   <div className="flex items-center gap-3 text-cyan-400">
-                    <CheckCircle className="w-6 h-6 shrink-0" />
-                    <h4 className="font-bold text-base">Message Form Ready!</h4>
+                    <Mail className="w-6 h-6 shrink-0" />
+                    <h4 className="font-bold text-base">Email Client Launched</h4>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    Thank you, <strong>{formData.name}</strong>. Because this portfolio is currently running without an external third-party email API key, no automated email was dispatched silently.
+                    Your native email client has been opened with your inquiry pre-filled to <strong>{personalInfo.email}</strong>. Simply click "Send" in your mail program to deliver the message.
                   </p>
                   <p className="text-xs text-slate-400">
-                    To send this message directly via your email client, click the button below:
+                    If your email client didn't launch automatically, you can copy the email address directly or reach out via LinkedIn:
                   </p>
                   <div className="flex flex-wrap gap-3 pt-2">
-                    <a
-                      href={`mailto:${personalInfo.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`From: ${formData.name} (${formData.email})\n\n${formData.message}`)}`}
-                      className="px-5 py-2.5 rounded-xl bg-cyan-500 text-white font-bold text-xs uppercase tracking-wider hover:bg-cyan-400 transition-colors"
+                    <button
+                      onClick={copyEmailToClipboard}
+                      className="px-5 py-2.5 rounded-xl bg-cyan-500 text-white font-bold text-xs uppercase tracking-wider hover:bg-cyan-400 transition-colors flex items-center gap-1.5"
                     >
-                      Open Email Client
+                      {copiedEmail ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                      <span>{copiedEmail ? 'Email Copied!' : 'Copy Email Address'}</span>
+                    </button>
+                    <a
+                      href={personalInfo.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2.5 rounded-xl border border-white/20 text-xs font-semibold text-slate-300 hover:bg-white/10 transition-colors flex items-center gap-1.5"
+                    >
+                      <Linkedin className="w-4 h-4 text-cyan-400" />
+                      <span>Message on LinkedIn</span>
                     </a>
                     <button
                       onClick={() => setSubmitStatus('idle')}
-                      className="px-5 py-2.5 rounded-xl border border-white/20 text-xs font-semibold text-slate-300 hover:bg-white/10 transition-colors"
+                      className="px-5 py-2.5 rounded-xl border border-white/10 text-xs font-semibold text-slate-400 hover:bg-white/5 transition-colors"
                     >
-                      Reset Form
+                      Back to Form
                     </button>
                   </div>
                 </div>

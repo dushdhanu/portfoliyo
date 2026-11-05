@@ -89,7 +89,7 @@ export const Research: React.FC = () => {
             <div className="lg:col-span-7 space-y-2.5">
               <h5 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
                 <Layers className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Primary Exploration Objectives</span>
+                <span>Planned Research Outcomes (Proposed Milestones)</span>
               </h5>
               {researchProject.targetedOutcomes.map((outcome, oIdx) => (
                 <div key={oIdx} className="flex items-start gap-2.5 text-xs text-slate-600 dark:text-slate-300">

@@ -5,7 +5,7 @@ import { timelineData } from '../../data/portfolioData';
 import { GraduationCap, Briefcase, Award, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
 
 export const ExperienceEdu: React.FC = () => {
-  const [filter, setFilter] = useState<'all' | 'education' | 'experience' | 'certification'>('all');
+  const [filter, setFilter] = useState<'all' | 'education' | 'experience'>('all');
 
   const filteredTimeline = filter === 'all'
     ? timelineData
@@ -43,7 +43,7 @@ export const ExperienceEdu: React.FC = () => {
             }`}
           >
             <GraduationCap className="w-3.5 h-3.5" />
-            <span>Education</span>
+            <span>Academic Education</span>
           </button>
 
           <button
@@ -55,19 +55,7 @@ export const ExperienceEdu: React.FC = () => {
             }`}
           >
             <Briefcase className="w-3.5 h-3.5" />
-            <span>Internships & Experience</span>
-          </button>
-
-          <button
-            onClick={() => setFilter('certification')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
-              filter === 'certification'
-                ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25'
-                : 'glass-card text-slate-600 dark:text-slate-300 hover:text-cyan-400'
-            }`}
-          >
-            <Award className="w-3.5 h-3.5" />
-            <span>Certifications</span>
+            <span>Internship Trajectory</span>
           </button>
         </div>
 
