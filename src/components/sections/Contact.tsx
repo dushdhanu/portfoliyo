@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeader } from '../common/SectionHeader';
 import { personalInfo } from '../../data/portfolioData';
-import { Mail, Linkedin, Github, MapPin, Send, CheckCircle, AlertCircle, Copy, Check } from 'lucide-react';
+import { Mail, Linkedin, Github, MapPin, Send, AlertCircle, Copy, Check } from 'lucide-react';
 
 interface FormState {
   name: string;

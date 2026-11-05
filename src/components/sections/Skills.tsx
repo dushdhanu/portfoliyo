@@ -104,12 +104,14 @@ export const Skills: React.FC = () => {
                   {/* Skills Tag Cloud */}
                   <div className="mt-5 flex flex-wrap gap-2">
                     {category.skills.map((skill, index) => (
-                      <div
+                      <motion.div
                         key={index}
-                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-colors cursor-default ${
                           skill.featured
-                            ? 'bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 dark:text-cyan-300 font-semibold shadow-sm'
-                            : 'bg-white/5 border border-white/10 text-slate-700 dark:text-slate-300 hover:border-white/20'
+                            ? 'bg-cyan-500/10 border border-cyan-500/30 text-cyan-500 dark:text-cyan-300 font-semibold shadow-sm hover:border-cyan-400/60 hover:bg-cyan-500/20'
+                            : 'bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:border-cyan-400/40 hover:text-cyan-500 dark:hover:text-cyan-300'
                         }`}
                       >
                         {skill.featured ? (
@@ -118,14 +120,14 @@ export const Skills: React.FC = () => {
                           <CheckCircle className="w-3 h-3 text-slate-400 shrink-0" />
                         )}
                         <span>{skill.name}</span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-slate-200/50 dark:border-white/10 flex items-center justify-between text-[11px] text-slate-400">
-                  <span>{category.skills.length} competencies</span>
-                  <span className="text-cyan-400/80 font-mono">portfolioData.ts</span>
+                  <span>{category.skills.length} Competencies</span>
+                  <span className="text-cyan-400/90 font-mono font-medium">Verified Toolkit</span>
                 </div>
               </motion.div>
             ))}
