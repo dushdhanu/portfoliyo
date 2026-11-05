@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Mail, Sparkles, Terminal, ChevronRight, Award, FileText } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, Sparkles, Terminal, ChevronRight, FileText } from 'lucide-react';
 import { personalInfo } from '../../data/portfolioData';
 import { ResumePdfModal } from '../common/ResumePdfModal';
 
@@ -151,42 +151,51 @@ export const Hero: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Right Column: Visual Avatar & Floating Tech Badges */}
+        {/* Right Column: Visual Avatar Portrait & Floating Tech Badges */}
         <div className="lg:col-span-5 flex items-center justify-center z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative w-72 h-72 sm:w-88 sm:h-88 md:w-96 md:h-96 flex items-center justify-center"
+            className="relative w-72 sm:w-80 md:w-96 flex items-center justify-center"
           >
             {/* Glowing Concentric Halo Rings */}
-            <div className="absolute inset-0 rounded-full border border-cyan-500/20 animate-spin-slow" />
-            <div className="absolute inset-4 rounded-full border border-violet-500/30 animate-pulse-slow" />
-            <div className="absolute inset-8 rounded-full bg-gradient-to-tr from-cyan-500/20 via-blue-500/10 to-violet-600/20 blur-2xl" />
+            <div className="absolute -inset-4 rounded-[2.5rem] border border-cyan-500/20 animate-spin-slow pointer-events-none" />
+            <div className="absolute -inset-2 rounded-[2.5rem] border border-violet-500/30 animate-pulse-slow pointer-events-none" />
+            <div className="absolute inset-4 rounded-3xl bg-gradient-to-tr from-cyan-500/25 via-blue-500/15 to-violet-600/25 blur-3xl pointer-events-none" />
 
-            {/* Central Avatar Visual Card */}
-            <div className="relative w-64 h-64 sm:w-76 sm:h-76 md:w-80 md:h-80 rounded-3xl glass-card p-6 flex flex-col items-center justify-center text-center border-2 border-cyan-500/30 shadow-[0_0_50px_rgba(6,182,212,0.25)] overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-violet-600/10 opacity-70 group-hover:opacity-100 transition-opacity" />
+            {/* Central Portrait Showcase Card */}
+            <div className="relative w-64 sm:w-72 md:w-80 rounded-3xl p-2 bg-gradient-to-b from-cyan-500/40 via-slate-800/60 to-violet-600/40 shadow-[0_0_50px_rgba(6,182,212,0.3)] backdrop-blur-xl group">
+              <div className="relative w-full h-80 sm:h-96 rounded-[22px] overflow-hidden bg-navy-950">
+                {/* User Portrait Image */}
+                <img
+                  src={personalInfo.avatar || `${import.meta.env.BASE_URL}my.jpeg`}
+                  alt={personalInfo.name}
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                  onError={(e) => {
+                    // Fallback to stylized DEV placeholder if image fails to load
+                    const target = e.currentTarget;
+                    target.style.display = 'none';
+                    const fallback = target.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.style.display = 'flex';
+                  }}
+                />
 
-              {/* Developer Monogram / Icon Placeholder */}
-              <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-tr from-cyan-400 via-blue-600 to-violet-600 p-1 shadow-xl shadow-cyan-500/30 mb-4 group-hover:scale-105 transition-transform">
-                <div className="w-full h-full rounded-[14px] bg-navy-950 flex flex-col items-center justify-center text-white">
-                  <Terminal className="w-10 h-10 text-cyan-400 mb-1" />
-                  <span className="text-xs font-mono font-bold tracking-widest text-cyan-300">
-                    &lt;DEV /&gt;
-                  </span>
+                {/* Hidden fallback if image fails */}
+                <div className="hidden w-full h-full flex-col items-center justify-center bg-navy-950 text-white p-6">
+                  <Terminal className="w-12 h-12 text-cyan-400 mb-2" />
+                  <span className="text-sm font-mono font-bold text-cyan-300">&lt;DEV /&gt;</span>
                 </div>
-              </div>
 
-              <h3 className="relative text-lg font-bold text-slate-900 dark:text-white">
-                {personalInfo.name}
-              </h3>
-              <p className="relative text-xs text-cyan-400 font-medium mt-1">
-                {personalInfo.degree}
-              </p>
-              <div className="relative flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] text-slate-300">
-                <Award className="w-3.5 h-3.5 text-amber-400" />
-                <span>Undergraduate Developer</span>
+                {/* Subtle dark gradient overlay at bottom for text contrast */}
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-navy-950 via-navy-950/70 to-transparent flex flex-col justify-end p-4 text-center">
+                  <h3 className="text-base sm:text-lg font-bold text-white drop-shadow-md">
+                    {personalInfo.name}
+                  </h3>
+                  <p className="text-[11px] sm:text-xs text-cyan-300 font-mono mt-0.5">
+                    {personalInfo.degree}
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -194,19 +203,19 @@ export const Hero: React.FC = () => {
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-              className="absolute -top-2 left-0 sm:-left-4 glass-card px-3.5 py-2 rounded-xl flex items-center gap-2 border border-emerald-500/30 shadow-lg text-xs font-semibold text-emerald-400"
+              className="absolute -top-3 left-0 sm:-left-5 glass-card px-3.5 py-2 rounded-xl flex items-center gap-2 border border-emerald-500/40 shadow-xl text-xs font-semibold text-emerald-400 backdrop-blur-md"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>Spring Boot</span>
             </motion.div>
 
-            {/* Floating Satellite Badge: React */}
+            {/* Floating Satellite Badge: React & TypeScript */}
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut', delay: 1 }}
-              className="absolute -bottom-4 right-0 sm:-right-4 glass-card px-3.5 py-2 rounded-xl flex items-center gap-2 border border-cyan-500/30 shadow-lg text-xs font-semibold text-cyan-400"
+              className="absolute -bottom-3 right-0 sm:-right-4 glass-card px-3.5 py-2 rounded-xl flex items-center gap-2 border border-cyan-500/40 shadow-xl text-xs font-semibold text-cyan-400 backdrop-blur-md"
             >
-              <span className="w-2 h-2 rounded-full bg-cyan-400" />
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
               <span>React & TypeScript</span>
             </motion.div>
 
@@ -214,7 +223,7 @@ export const Hero: React.FC = () => {
             <motion.div
               animate={{ x: [0, 6, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut', delay: 0.5 }}
-              className="absolute top-1/2 -right-8 glass-card px-3 py-1.5 rounded-xl hidden sm:flex items-center gap-2 border border-blue-500/30 shadow-lg text-xs font-semibold text-blue-400"
+              className="absolute top-1/2 -right-8 glass-card px-3 py-1.5 rounded-xl hidden sm:flex items-center gap-2 border border-blue-500/40 shadow-xl text-xs font-semibold text-blue-400 backdrop-blur-md"
             >
               <Sparkles className="w-3.5 h-3.5 text-blue-400" />
               <span>Flutter</span>

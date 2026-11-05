@@ -33,7 +33,8 @@ export const personalInfo: PersonalInfo = {
     "Artificial Intelligence",
     "Cybersecurity & Zero Trust Architecture"
   ],
-  statusBadge: "Available for Software Engineering Internships & Opportunities"
+  statusBadge: "Available for Software Engineering Internships & Opportunities",
+  avatar: import.meta.env.BASE_URL + "my.jpeg"
 };
 
 export const navLinks: NavLink[] = [

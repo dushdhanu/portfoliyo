@@ -42,8 +42,21 @@ export const About: React.FC = () => {
               <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-all" />
 
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-violet-600 flex items-center justify-center text-white shadow-lg shadow-cyan-500/20 text-2xl font-bold">
-                  DD
+                <div className="relative w-16 h-16 rounded-2xl p-0.5 bg-gradient-to-tr from-cyan-400 via-blue-500 to-violet-600 shadow-lg shadow-cyan-500/25 shrink-0 overflow-hidden">
+                  <img
+                    src={personalInfo.avatar || `${import.meta.env.BASE_URL}my.jpeg`}
+                    alt={personalInfo.name}
+                    className="w-full h-full object-cover object-top rounded-[14px]"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.style.display = 'none';
+                      const fallback = target.nextElementSibling as HTMLElement;
+                      if (fallback) fallback.style.display = 'flex';
+                    }}
+                  />
+                  <div className="hidden w-full h-full rounded-[14px] bg-gradient-to-tr from-cyan-500 via-blue-600 to-violet-600 items-center justify-center text-white font-bold text-xl">
+                    DD
+                  </div>
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white">

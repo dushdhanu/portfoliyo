@@ -88,12 +88,17 @@ export const GithubActivity: React.FC = () => {
             <div className="flex items-center gap-5 text-center md:text-left flex-col md:flex-row">
               <div className="relative">
                 <img
-                  src={stats.avatar_url}
+                  src={personalInfo.avatar || stats.avatar_url}
                   alt={personalInfo.name}
-                  className="w-20 h-20 rounded-2xl border-2 border-cyan-500/50 shadow-lg shadow-cyan-500/20 object-cover"
+                  className="w-20 h-20 rounded-2xl border-2 border-cyan-500/50 shadow-lg shadow-cyan-500/20 object-cover object-top"
                   onError={(e) => {
-                    // Fallback to stylized initials if network avatar fails
-                    (e.target as HTMLElement).style.display = 'none';
+                    // Fallback to network avatar or stylized initials
+                    const target = e.currentTarget;
+                    if (stats.avatar_url && target.src !== stats.avatar_url) {
+                      target.src = stats.avatar_url;
+                    } else {
+                      target.style.display = 'none';
+                    }
                   }}
                 />
                 <div className="absolute -bottom-1 -right-1 p-1 rounded-lg bg-navy-950 border border-cyan-400/50 text-cyan-400">

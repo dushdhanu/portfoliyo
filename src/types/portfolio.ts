@@ -15,6 +15,7 @@ export interface PersonalInfo {
   careerGoal: string;
   passions: string[];
   statusBadge: string;
+  avatar?: string;
 }
 
 export interface SkillItem {
