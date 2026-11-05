@@ -26,7 +26,7 @@ export const About: React.FC = () => {
             className="lg:col-span-5 flex flex-col justify-between space-y-6"
           >
             {/* Visual Glassmorphic Showcase Card */}
-            <div className="glass-card rounded-3xl p-8 border border-white/10 dark:border-white/10 relative overflow-hidden group">
+            <div className="glass-card rounded-3xl p-8 border border-slate-200/90 dark:border-white/10 relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-all" />
 
               <div className="flex items-center gap-4 mb-6">
@@ -37,7 +37,7 @@ export const About: React.FC = () => {
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                     {personalInfo.name}
                   </h3>
-                  <div className="flex items-center gap-1.5 text-xs text-cyan-500 dark:text-cyan-400 font-medium mt-1">
+                  <div className="flex items-center gap-1.5 text-xs text-cyan-600 dark:text-cyan-400 font-semibold mt-1">
                     <MapPin className="w-3.5 h-3.5" />
                     <span>{personalInfo.location}</span>
                   </div>
@@ -45,30 +45,30 @@ export const About: React.FC = () => {
               </div>
 
               {/* Quick Info Items */}
-              <div className="space-y-3 pt-4 border-t border-slate-200/50 dark:border-white/10 text-xs">
+              <div className="space-y-3 pt-4 border-t border-slate-200/80 dark:border-white/10 text-xs">
                 <div className="flex items-start gap-3">
-                  <GraduationCap className="w-4 h-4 text-cyan-400 mt-0.5 shrink-0" />
+                  <GraduationCap className="w-4 h-4 text-cyan-500 dark:text-cyan-400 mt-0.5 shrink-0" />
                   <div>
-                    <span className="text-slate-400 font-medium block">Degree</span>
-                    <span className="text-slate-800 dark:text-slate-200 font-semibold">{personalInfo.degree}</span>
+                    <span className="text-slate-500 dark:text-slate-400 font-medium block">Degree</span>
+                    <span className="text-slate-900 dark:text-slate-200 font-semibold">{personalInfo.degree}</span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Target className="w-4 h-4 text-violet-400 mt-0.5 shrink-0" />
+                  <Target className="w-4 h-4 text-violet-500 dark:text-violet-400 mt-0.5 shrink-0" />
                   <div>
-                    <span className="text-slate-400 font-medium block">Career Objective</span>
-                    <span className="text-slate-800 dark:text-slate-200">{personalInfo.careerGoal}</span>
+                    <span className="text-slate-500 dark:text-slate-400 font-medium block">Career Objective</span>
+                    <span className="text-slate-800 dark:text-slate-200 font-medium">{personalInfo.careerGoal}</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Core Passions Pills Bento */}
-            <div className="glass-card rounded-3xl p-6 border border-white/10">
+            <div className="glass-card rounded-3xl p-6 border border-slate-200/90 dark:border-white/10">
               <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="w-4 h-4 text-cyan-400" />
-                <h4 className="text-xs font-bold tracking-wider uppercase text-slate-800 dark:text-slate-200">
+                <Sparkles className="w-4 h-4 text-cyan-500 dark:text-cyan-400" />
+                <h4 className="text-xs font-bold tracking-wider uppercase text-slate-900 dark:text-slate-200">
                   Core Passions & Focus
                 </h4>
               </div>
@@ -77,7 +77,7 @@ export const About: React.FC = () => {
                 {personalInfo.passions.map((passion, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1.5 rounded-xl bg-slate-200/50 dark:bg-white/5 border border-slate-300/40 dark:border-white/10 text-slate-700 dark:text-slate-300 text-xs font-medium hover:border-cyan-400/40 hover:text-cyan-400 transition-colors"
+                    className="px-3 py-1.5 rounded-xl bg-slate-100/90 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:border-cyan-500/40 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
                   >
                     {passion}
                   </span>

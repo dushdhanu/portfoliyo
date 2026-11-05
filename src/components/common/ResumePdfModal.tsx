@@ -256,3 +256,4 @@ export const ResumePdfModal: React.FC<ResumePdfModalProps> = ({ isOpen, onClose 
     </AnimatePresence>
   );
 };
+

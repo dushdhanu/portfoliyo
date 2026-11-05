@@ -239,6 +239,12 @@ export const Hero: React.FC = () => {
           <ArrowDown className="w-4 h-4 text-cyan-400" />
         </motion.div>
       </motion.a>
+
+      {/* Curriculum Vitae / Resume PDF Modal */}
+      <ResumePdfModal
+        isOpen={resumeModalOpen}
+        onClose={() => setResumeModalOpen(false)}
+      />
     </section>
   );
 };
