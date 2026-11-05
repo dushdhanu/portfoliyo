@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Mail, Sparkles, Terminal, ChevronRight, Award } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, Sparkles, Terminal, ChevronRight, Award, FileText } from 'lucide-react';
 import { personalInfo } from '../../data/portfolioData';
+import { ResumePdfModal } from '../common/ResumePdfModal';
 
 export const Hero: React.FC = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [resumeModalOpen, setResumeModalOpen] = useState(false);
 
   // Typewriter effect for animated roles
   useEffect(() => {
@@ -110,11 +112,19 @@ export const Hero: React.FC = () => {
 
             <a
               href="#contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-bold text-sm tracking-wide glass-card hover:border-cyan-500/40 text-slate-800 dark:text-slate-100 hover:text-cyan-400 dark:hover:text-cyan-300 transition-all hover:-translate-y-0.5"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-sm tracking-wide glass-card hover:border-cyan-500/40 text-slate-800 dark:text-slate-100 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all hover:-translate-y-0.5"
             >
-              <Mail className="w-4 h-4 text-cyan-400" />
+              <Mail className="w-4 h-4 text-cyan-500" />
               <span>Contact Me</span>
             </a>
+
+            <button
+              onClick={() => setResumeModalOpen(true)}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm tracking-wide glass-card hover:border-cyan-500/40 text-slate-800 dark:text-slate-100 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all hover:-translate-y-0.5"
+            >
+              <FileText className="w-4 h-4 text-cyan-500" />
+              <span>Resume (PDF)</span>
+            </button>
 
             {/* Social Icons */}
             <div className="flex items-center gap-3 mt-2 sm:mt-0 sm:ml-2">

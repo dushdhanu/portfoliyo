@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, FileText, Sparkles } from 'lucide-react';
 import { navLinks, personalInfo } from '../../data/portfolioData';
 import { ThemeToggle } from './ThemeToggle';
-import { PlaceholderModal } from './PlaceholderModal';
+import { ResumePdfModal } from './ResumePdfModal';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar: React.FC = () => {
@@ -170,13 +170,10 @@ export const Navbar: React.FC = () => {
         </AnimatePresence>
       </header>
 
-      {/* Resume Placeholder Modal */}
-      <PlaceholderModal
+      {/* Professional Resume / CV PDF Modal */}
+      <ResumePdfModal
         isOpen={resumeModalOpen}
         onClose={() => setResumeModalOpen(false)}
-        title="Curriculum Vitae / Resume"
-        itemType="resume"
-        description={`Dushmanthi's resume can be downloaded directly once linked in portfolioData.ts. You can also reach out directly to ${personalInfo.email} to request the latest verified CV and academic transcripts.`}
       />
     </>
   );
