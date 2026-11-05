@@ -7,8 +7,8 @@ export interface PersonalInfo {
   location: string;
   degree: string;
   university: string;
-  email: string;
-  phone: string;
+  email?: string;
+  phone?: string;
   github: string;
   linkedin: string;
   resumeUrl: string;

@@ -55,22 +55,28 @@ export const Contact: React.FC = () => {
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Honest handling: construct a real mailto link and launch native email client
-    const mailtoLink = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
-      `[Portfolio Inquiry] ${formData.subject}`
-    )}&body=${encodeURIComponent(
-      `Sender: ${formData.name}\nContact Email: ${formData.email}\n\nMessage:\n${formData.message}`
-    )}`;
-
-    window.location.href = mailtoLink;
+    if (personalInfo.email) {
+      // Direct mailto link with prefilled subject and body
+      const mailtoLink = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
+        `[Portfolio Inquiry] ${formData.subject}`
+      )}&body=${encodeURIComponent(
+        `Sender: ${formData.name}\nContact Email: ${formData.email}\n\nMessage:\n${formData.message}`
+      )}`;
+      window.location.href = mailtoLink;
+    } else {
+      // Safe fallback when direct email is not publicly published: open LinkedIn messaging
+      window.open(personalInfo.linkedin, '_blank', 'noopener,noreferrer');
+    }
     setIsSubmitting(false);
     setSubmitStatus('mailto-opened');
   };
 
   const copyEmailToClipboard = () => {
-    navigator.clipboard.writeText(personalInfo.email);
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2500);
+    if (personalInfo.email) {
+      navigator.clipboard.writeText(personalInfo.email);
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2500);
+    }
   };
 
   return (
@@ -110,21 +116,38 @@ export const Contact: React.FC = () => {
                     </div>
                     <div>
                       <span className="text-[11px] text-slate-400 uppercase font-semibold block">Email</span>
-                      <a
-                        href={`mailto:${personalInfo.email}`}
-                        className="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 hover:text-cyan-400 transition-colors"
-                      >
-                        {personalInfo.email}
-                      </a>
+                      {personalInfo.email ? (
+                        <a
+                          href={`mailto:${personalInfo.email}`}
+                          className="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 hover:text-cyan-400 transition-colors"
+                        >
+                          {personalInfo.email}
+                        </a>
+                      ) : (
+                        <span className="text-xs sm:text-sm font-medium text-slate-400">
+                          Available upon inquiry / LinkedIn
+                        </span>
+                      )}
                     </div>
                   </div>
-                  <button
-                    onClick={copyEmailToClipboard}
-                    aria-label="Copy Email"
-                    className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
-                  >
-                    {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                  </button>
+                  {personalInfo.email ? (
+                    <button
+                      onClick={copyEmailToClipboard}
+                      aria-label="Copy Email"
+                      className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+                    >
+                      {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                    </button>
+                  ) : (
+                    <a
+                      href={personalInfo.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-cyan-400 hover:underline font-semibold"
+                    >
+                      Connect
+                    </a>
+                  )}
                 </div>
 
                 {/* Location Item */}
@@ -209,22 +232,31 @@ export const Contact: React.FC = () => {
                 <div className="p-6 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-slate-200 space-y-4">
                   <div className="flex items-center gap-3 text-cyan-400">
                     <Mail className="w-6 h-6 shrink-0" />
-                    <h4 className="font-bold text-base">Email Client Launched</h4>
+                    <h4 className="font-bold text-base">
+                      {personalInfo.email ? 'Email Client Launched' : 'Connecting via LinkedIn'}
+                    </h4>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    Your native email client has been opened with your inquiry pre-filled to <strong>{personalInfo.email}</strong>. Simply click "Send" in your mail program to deliver the message.
-                  </p>
-                  <p className="text-xs text-slate-400">
-                    If your email client didn't launch automatically, you can copy the email address directly or reach out via LinkedIn:
+                    {personalInfo.email ? (
+                      <>
+                        Your native email client has been opened with your inquiry pre-filled to <strong>{personalInfo.email}</strong>. Simply click "Send" in your mail program to deliver the message.
+                      </>
+                    ) : (
+                      <>
+                        Your inquiry details have been processed. You can send a direct message via LinkedIn or connect directly for immediate communication.
+                      </>
+                    )}
                   </p>
                   <div className="flex flex-wrap gap-3 pt-2">
-                    <button
-                      onClick={copyEmailToClipboard}
-                      className="px-5 py-2.5 rounded-xl bg-cyan-500 text-white font-bold text-xs uppercase tracking-wider hover:bg-cyan-400 transition-colors flex items-center gap-1.5"
-                    >
-                      {copiedEmail ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                      <span>{copiedEmail ? 'Email Copied!' : 'Copy Email Address'}</span>
-                    </button>
+                    {personalInfo.email && (
+                      <button
+                        onClick={copyEmailToClipboard}
+                        className="px-5 py-2.5 rounded-xl bg-cyan-500 text-white font-bold text-xs uppercase tracking-wider hover:bg-cyan-400 transition-colors flex items-center gap-1.5"
+                      >
+                        {copiedEmail ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                        <span>{copiedEmail ? 'Email Copied!' : 'Copy Email Address'}</span>
+                      </button>
+                    )}
                     <a
                       href={personalInfo.linkedin}
                       target="_blank"

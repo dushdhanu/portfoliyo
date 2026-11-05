@@ -86,7 +86,6 @@
 }
 
 /* Crystal-Clear Print / PDF Optimization Styles */
-/* Completely prevents mobile / desktop Print Spooler crashes by stripping GPU filters and animations */
 @media print {
   @page {
     size: A4 portrait;
@@ -96,60 +95,56 @@
   html, body {
     background: #ffffff !important;
     color: #0f172a !important;
-    font-size: 11pt !important;
+    font-size: 10pt !important;
     line-height: 1.4 !important;
+    overflow: visible !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  /* Hide interactive web elements, backgrounds, orbs, nav, and modals during printing */
-  nav,
-  header,
-  footer,
-  button,
-  .no-print,
-  .fixed,
-  [aria-modal="true"] > div:first-child,
-  .animate-blob,
-  .animate-pulse,
-  .animate-spin-slow,
-  .bg-grid-pattern {
-    display: none !important;
+  /* Hide everything in the document by default */
+  body * {
+    visibility: hidden !important;
   }
 
-  /* Reset glassmorphism and backdrop-filters that cause Android print spooler crashes */
-  * {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    animation: none !important;
-    transition: none !important;
-  }
-
-  /* If a dedicated printable CV exists, make it occupy the full clean page */
-  #printable-cv {
-    display: block !important;
+  /* Strictly expose only the printable CV document container and its elements */
+  #printable-cv,
+  #printable-cv * {
     visibility: visible !important;
-    position: static !important;
+  }
+
+  #printable-cv {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
     background: #ffffff !important;
     color: #0f172a !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
   }
 
-  #printable-cv * {
-    visibility: visible !important;
+  /* Elements explicitly marked as non-printable */
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+
+  /* Prevent page-break cutting across items */
+  .avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
   .page-break-before {
     page-break-before: always !important;
     break-before: page !important;
-  }
-
-  .avoid-break {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
   }
 }

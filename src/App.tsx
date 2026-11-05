@@ -22,7 +22,7 @@ export const App: React.FC = () => {
       {/* Intro Name Splash Screen / Preloader */}
       {loading && <Preloader onComplete={() => setLoading(false)} />}
 
-      <div className="relative min-h-screen bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-slate-100 selection:bg-cyan-500 selection:text-white transition-colors duration-300">
+      <div className="relative min-h-screen overflow-x-hidden bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-slate-100 selection:bg-cyan-500 selection:text-white transition-colors duration-300">
         {/* Ambient Glowing Aura Background & Grids */}
         <BackgroundGlow />
 

@@ -18,9 +18,9 @@ export const personalInfo: PersonalInfo = {
   ],
   location: "Sri Lanka",
   degree: "BSc (Hons) in Computer Science",
-  university: "University Student (Sri Lanka)",
-  email: "dushmanthi.contact@example.com", // [EDITABLE: Replace with your actual preferred email]
-  phone: "+94 7X XXX XXXX", // [EDITABLE: Replace with your preferred phone number]
+  university: "Undergraduate Computer Science Student (Sri Lanka)",
+  email: undefined, // Add your verified email address here
+  phone: undefined, // Add your verified phone number here
   github: "https://github.com/dushdhanu",
   linkedin: "https://www.linkedin.com/in/dushmanthi-dhananjana/",
   resumeUrl: "#resume-placeholder", // [EDITABLE: Replace with Google Drive or direct PDF link if preferred]
