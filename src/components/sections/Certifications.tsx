@@ -10,9 +10,6 @@ import {
   ShieldCheck, 
   Calendar, 
   Eye, 
-  CheckCircle2, 
-  Sparkles, 
-  FileText,
   Linkedin
 } from 'lucide-react';
 import { personalInfo } from '../../data/profile';

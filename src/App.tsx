@@ -6,6 +6,8 @@ import { Hero } from './components/sections/Hero';
 import { About } from './components/sections/About';
 import { Skills } from './components/sections/Skills';
 import { Projects } from './components/sections/Projects';
+import { Certifications } from './components/sections/Certifications';
+import { GithubActivity } from './components/sections/GithubActivity';
 import { Research } from './components/sections/Research';
 import { ExperienceEdu } from './components/sections/ExperienceEdu';
 import { Contact } from './components/sections/Contact';
@@ -33,6 +35,8 @@ export const App: React.FC = () => {
           <About />
           <Skills />
           <Projects />
+          <Certifications />
+          <GithubActivity />
           <Research />
           <ExperienceEdu />
           <Contact />

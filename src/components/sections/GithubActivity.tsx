@@ -5,16 +5,11 @@ import { personalInfo } from '../../data/profile';
 import { projects } from '../../data/projects';
 import { 
   Github, 
-  Star, 
-  GitFork, 
   Code2, 
   ExternalLink, 
   BookOpen, 
   Terminal, 
-  Users, 
-  Flame,
-  CheckCircle2,
-  Sparkles
+  CheckCircle2
 } from 'lucide-react';
 
 interface GitHubUserStats {
@@ -34,8 +29,6 @@ export const GithubActivity: React.FC = () => {
     bio: "Computer Science Undergraduate | Aspiring Software Engineer"
   });
 
-  const [imgErrorStats, setImgErrorStats] = useState(false);
-  const [imgErrorStreak, setImgErrorStreak] = useState(false);
 
   // Fetch real GitHub user data client-side
   useEffect(() => {
