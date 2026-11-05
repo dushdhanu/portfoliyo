@@ -328,7 +328,7 @@ export const Projects: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Actions: GitHub & Live Demo */}
+                  {/* Actions: GitHub & Optional Live Demo */}
                   <div className="mt-8 pt-6 border-t border-slate-200/60 dark:border-white/10 flex items-center gap-3">
                     <a
                       href={project.githubUrl}
@@ -337,16 +337,21 @@ export const Projects: React.FC = () => {
                       className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-white/10 hover:border-cyan-500/50 hover:bg-cyan-500/10 text-slate-800 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 text-xs font-bold tracking-wide transition-all"
                     >
                       <Github className="w-4 h-4" />
-                      <span>View GitHub</span>
+                      <span>View GitHub Repository</span>
                     </a>
 
-                    <button
-                      onClick={() => handleOpenLiveDemo(project)}
-                      className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-bold tracking-wide shadow-md shadow-cyan-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
-                    >
-                      <span>Live / Architecture</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </button>
+                    {/* Only display Live Demo when a genuine deployed demo URL exists */}
+                    {project.liveUrl && project.liveUrl.startsWith('http') && !project.liveUrl.includes('github.com') && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-bold tracking-wide shadow-md shadow-cyan-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                      >
+                        <span>Live Demo</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>

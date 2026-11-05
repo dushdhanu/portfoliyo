@@ -176,18 +176,47 @@ export const Certifications: React.FC = () => {
             </AnimatePresence>
           </div>
         ) : (
-          /* Polished Empty State */
-          <div className="p-12 text-center rounded-3xl glass-card border border-slate-200 dark:border-white/10 max-w-xl mx-auto">
-            <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mx-auto mb-4">
-              <Award className="w-8 h-8" />
+          /* Recruiter-friendly Verified Empty State */
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="p-8 sm:p-12 text-center rounded-3xl glass-card border border-slate-200 dark:border-white/10 max-w-2xl mx-auto shadow-xl"
+          >
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500/20 to-blue-600/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 mx-auto mb-5 shadow-lg shadow-cyan-500/10">
+              <ShieldCheck className="w-8 h-8" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-              No Certificates in this Category Yet
+            
+            <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase tracking-wider bg-cyan-500/10 text-cyan-500 dark:text-cyan-400 border border-cyan-500/30 inline-block mb-3">
+              Recruiter Transparency Guarantee
+            </span>
+
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+              Verified Credentials & Achievements
             </h3>
-            <p className="mt-2 text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
-              New certifications can be added by updating <code className="text-cyan-400 font-mono">src/data/certifications.ts</code> and placing certificate files inside the <code className="text-cyan-400 font-mono">public/certificates/</code> directory.
+            
+            <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-lg mx-auto">
+              In accordance with professional software engineering integrity, certificate images and license IDs are published exclusively upon direct verification. Please inspect my verified academic progress and certifications directly on LinkedIn.
             </p>
-          </div>
+
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-bold shadow-lg shadow-cyan-500/20 hover:scale-105 transition-all"
+              >
+                <Linkedin className="w-4 h-4" />
+                <span>Verify on LinkedIn Profile</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-slate-200 dark:border-white/10 text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center gap-2">
+              <Award className="w-4 h-4 text-cyan-500" />
+              <span>To add new certificates, place files in <code className="text-cyan-400 font-mono">public/certificates/</code> and update <code className="text-cyan-400 font-mono">src/data/certifications.ts</code></span>
+            </div>
+          </motion.div>
         )}
       </div>
 

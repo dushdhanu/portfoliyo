@@ -5,7 +5,7 @@ export const projects: Project[] = [
     id: "bookshop-delivery",
     title: "Bookshop Delivery Management System",
     category: "Web Development",
-    description: "A comprehensive full-stack bookstore logistics and delivery tracking platform tailored for order lifecycle management, inventory sync, and real-time dispatch tracking.",
+    description: "Full-stack bookstore logistics and delivery tracking platform tailored for order lifecycle management, inventory sync, and real-time dispatch tracking.",
     highlights: [
       "Role-based order lifecycle management from checkout to doorstep dispatch",
       "Interactive delivery status tracker with responsive customer dashboard",
@@ -13,7 +13,7 @@ export const projects: Project[] = [
     ],
     technologies: ["Java", "Spring Boot", "MySQL", "React", "REST API", "Tailwind CSS"],
     githubUrl: "https://github.com/dushdhanu/Bookshop-Delivery-System",
-    liveUrl: "https://github.com/dushdhanu/Bookshop-Delivery-System",
+    // No liveUrl until a verified public cloud deployment is created
     primaryLanguage: "Java",
     isFeatured: true,
     isPlaceholder: false
@@ -22,15 +22,15 @@ export const projects: Project[] = [
     id: "bank-fraud-detection",
     title: "Bank Fraud Detection & Alert System",
     category: "Backend",
-    description: "An intelligent financial transaction monitoring service that analyzes suspicious activity patterns, triggers real-time fraud prevention alerts, and safeguards customer accounts.",
+    description: "Financial transaction monitoring service designed to evaluate suspicious activity patterns, calculate fraud risk scores, and trigger real-time defensive alerts.",
     highlights: [
-      "Real-time rule engine evaluating risk scores on incoming transaction streams",
-      "Automated alerting mechanism notifying security officers and account holders",
+      "Rule-based risk score assessment for incoming transaction streams",
+      "Alerting framework notifying security operators of anomalous transactions",
       "Robust RESTful backend with transactional consistency and audit trail logging"
     ],
-    technologies: ["Python", "Java", "Spring Boot", "SQL", "REST API", "Security Rules Engine"],
+    technologies: ["Python", "Java", "SQL", "REST API"],
     githubUrl: "https://github.com/dushdhanu/Bank-Fraud-Detection-Alert-System",
-    liveUrl: "https://github.com/dushdhanu/Bank-Fraud-Detection-Alert-System",
+    // No liveUrl until a verified public cloud deployment is created
     primaryLanguage: "Python",
     isFeatured: true,
     isPlaceholder: false
@@ -39,15 +39,15 @@ export const projects: Project[] = [
     id: "soc-live",
     title: "SOC-Live Security Monitoring System",
     category: "Cybersecurity & Systems",
-    description: "A centralized Security Operations Center (SOC) live monitoring platform for log ingestion, threat detection, event correlation, and cybersecurity posture visualization.",
+    description: "Security Operations Center (SOC) live monitoring platform for log ingestion, threat detection, event correlation, and defensive telemetry visualization.",
     highlights: [
       "Real-time event streaming and anomalous telemetry detection dashboard",
       "Log aggregation and severity-based incident triage classification",
-      "Defensive security architecture aligned with modern Zero Trust principles"
+      "Defensive security architecture aligned with core network defense principles"
     ],
-    technologies: ["Python", "Linux", "Bash", "Networking", "Log Analysis", "SIEM/SOC Tools"],
+    technologies: ["Python", "Linux", "Bash", "Networking", "Log Analysis"],
     githubUrl: "https://github.com/dushdhanu/soc-live",
-    liveUrl: "https://github.com/dushdhanu/soc-live",
+    // No liveUrl until a verified public cloud deployment is created
     primaryLanguage: "Python",
     isFeatured: true,
     isPlaceholder: false
@@ -56,22 +56,22 @@ export const projects: Project[] = [
     id: "medscan-ai",
     title: "MedScan AI - Healthcare Assistant",
     category: "Mobile Applications",
-    description: "An offline-first clinical assistant mobile app that identifies prescription medicines, blister packs, and dosages from camera photos using Google Gemini Vision AI, complete with bilingual Sinhala and English reporting.",
+    description: "Offline-first clinical assistant mobile app that identifies prescription medicines, blister packs, and dosages from camera photos using Google Gemini Vision AI, complete with bilingual Sinhala and English reporting.",
     highlights: [
-      "AI-powered visual analysis of medication blister packs, active ingredients, and safety warnings using Google Gemini 1.5 Flash",
-      "Bilingual real-time translation & Text-to-Speech (TTS) narration with native Sinhala (සිංහල) Unicode and English support",
-      "Offline SQLite medical record vault, persistent dosage reminder notifications, and an in-app emergency pharmacy directory"
+      "AI-powered visual analysis of medication blister packs and safety warnings using Gemini Vision",
+      "Bilingual real-time translation & Text-to-Speech narration with native Sinhala and English support",
+      "Offline SQLite medical record vault and persistent dosage reminders"
     ],
-    technologies: ["Flutter", "Dart", "Google Gemini Vision AI", "SQLite", "Text-to-Speech", "Material 3"],
+    technologies: ["Flutter", "Dart", "Google Gemini Vision AI", "SQLite", "Material 3"],
     githubUrl: "https://github.com/dushdhanu/mediscan-ai-assistant",
-    liveUrl: "https://github.com/dushdhanu/mediscan-ai-assistant",
+    // Mobile APK / app repository
     primaryLanguage: "Dart",
     isFeatured: true,
     isPlaceholder: false
   },
   {
     id: "portfolio-web",
-    title: "Personal Interactive Developer Portfolio",
+    title: "Interactive Developer Portfolio",
     category: "Web Development",
     description: "Modern, responsive personal developer portfolio engineered with React 18, TypeScript, Tailwind CSS, and Framer Motion with animated splash screen, dynamic GitHub synchronization, and certifications showcase.",
     highlights: [
@@ -81,27 +81,9 @@ export const projects: Project[] = [
     ],
     technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vite", "GitHub Actions"],
     githubUrl: "https://github.com/dushdhanu/portfoliyo",
-    liveUrl: "https://dushdhanu.github.io/portfoliyo/",
+    liveUrl: "https://dushdhanu.github.io/portfoliyo/", // REAL DEPLOYED URL
     primaryLanguage: "TypeScript",
     isFeatured: true,
     isPlaceholder: false
-  },
-  {
-    id: "user-management-api",
-    title: "User Management REST API",
-    category: "Backend",
-    description: "Enterprise-ready authentication and user lifecycle service built with Spring Boot, secure credential handling, and Spring Data JPA.",
-    highlights: [
-      "Secure authentication with token-based access and password hashing",
-      "Full CRUD operations with structured error responses and input validation",
-      "Automated schema mappings and database migrations using Spring Data JPA"
-    ],
-    technologies: ["Java", "Spring Boot", "Spring Data JPA", "MySQL", "JWT", "REST API"],
-    githubUrl: "https://github.com/dushdhanu/user-management-rest-api",
-    liveUrl: "https://github.com/dushdhanu/user-management-rest-api",
-    primaryLanguage: "Java",
-    isFeatured: false,
-    isPlaceholder: false
   }
 ];
-

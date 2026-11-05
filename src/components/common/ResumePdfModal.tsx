@@ -54,6 +54,16 @@ export const ResumePdfModal: React.FC<ResumePdfModalProps> = ({ isOpen, onClose 
 
               {/* Action Buttons */}
               <div className="flex items-center gap-2">
+                <a
+                  href={`${import.meta.env.BASE_URL}resume.pdf`}
+                  download="Dushmanthi_Dhananjana_Resume.pdf"
+                  className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wide border border-slate-300 dark:border-white/10 hover:border-cyan-500/50 hover:bg-cyan-500/10 text-slate-700 dark:text-slate-200 hover:text-cyan-400 transition-all"
+                  title="Download static PDF if uploaded"
+                >
+                  <Download className="w-3.5 h-3.5 text-cyan-500" />
+                  <span>Download PDF</span>
+                </a>
+
                 <button
                   onClick={handlePrint}
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wide bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 hover:from-cyan-400 hover:to-violet-500 text-white shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all"
