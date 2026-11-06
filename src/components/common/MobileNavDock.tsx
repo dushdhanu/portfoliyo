@@ -1,9 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Home, User, Briefcase, Code2, Menu } from 'lucide-react';
+import { useNavigation } from '../../context/NavigationContext';
 
 interface MobileNavDockProps {
-  activeSection: string;
   onOpenMenu: () => void;
   isDrawerOpen?: boolean;
 }
@@ -25,20 +24,14 @@ const DOCK_ITEMS: DockItem[] = [
 ];
 
 export const MobileNavDock: React.FC<MobileNavDockProps> = ({
-  activeSection,
   onOpenMenu,
   isDrawerOpen = false
 }) => {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href?: string) => {
-    if (!href) return;
+  const { activeSection, scrollToSection } = useNavigation();
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      // Update hash without forcing browser jump
-      window.history.pushState(null, '', href);
-    }
+    scrollToSection(id);
   };
 
   // If mobile drawer is open, keep dock hidden to prevent overlapping
@@ -47,7 +40,7 @@ export const MobileNavDock: React.FC<MobileNavDockProps> = ({
   return (
     <nav 
       aria-label="Mobile Navigation Dock"
-      className="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-[380px] md:hidden pointer-events-auto transition-all duration-300"
+      className="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-[380px] md:hidden pointer-events-auto transition-transform duration-200"
       style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
     >
       <div className="floating-glass-dock rounded-full px-2 py-1.5 flex items-center justify-between border border-white/15 shadow-2xl">
@@ -77,19 +70,17 @@ export const MobileNavDock: React.FC<MobileNavDockProps> = ({
             <a
               key={item.id}
               href={item.href}
-              onClick={(e) => handleClick(e, item.href)}
+              onClick={(e) => handleClick(e, item.id)}
               aria-label={`Navigate to ${item.label}`}
-              className={`relative flex flex-col items-center justify-center min-w-[54px] min-h-[44px] py-1 px-2 rounded-full transition-all ${
+              className={`relative flex flex-col items-center justify-center min-w-[54px] min-h-[44px] py-1 px-2 rounded-full transition-colors duration-150 active:scale-95 ${
                 isActive
                   ? 'text-cyan-500 dark:text-cyan-300 font-bold'
                   : 'text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-white'
               }`}
             >
               {isActive && (
-                <motion.div
-                  layoutId="activeDockBubble"
-                  className="absolute inset-0 rounded-full bg-cyan-500/15 dark:bg-cyan-500/20 border border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.25)] -z-10"
-                  transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+                <span 
+                  className="absolute inset-0 rounded-full bg-cyan-500/15 dark:bg-cyan-500/20 border border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.25)] -z-10 transition-opacity duration-150" 
                 />
               )}
               <div className="p-1 rounded-full">
@@ -105,4 +96,5 @@ export const MobileNavDock: React.FC<MobileNavDockProps> = ({
     </nav>
   );
 };
+
 

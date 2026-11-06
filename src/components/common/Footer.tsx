@@ -1,13 +1,13 @@
 import React from 'react';
 import { ArrowUp, Github, Linkedin, Mail, Heart } from 'lucide-react';
 import { personalInfo, navLinks } from '../../data/portfolioData';
+import { useNavigation } from '../../context/NavigationContext';
 
 export const Footer: React.FC = () => {
+  const { scrollToSection } = useNavigation();
+
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    scrollToSection('home');
   };
 
   const currentYear = new Date().getFullYear();
@@ -39,6 +39,10 @@ export const Footer: React.FC = () => {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(link.href.replace('#', ''));
+              }}
               className="hover:text-cyan-400 transition-colors"
             >
               {link.label}

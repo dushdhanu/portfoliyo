@@ -3,12 +3,15 @@ import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail, Sparkles, Terminal, ChevronRight, FileText } from 'lucide-react';
 import { personalInfo } from '../../data/portfolioData';
 import { ResumePdfModal } from '../common/ResumePdfModal';
+import { useNavigation } from '../../context/NavigationContext';
 
 export const Hero: React.FC = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
+
+  const { scrollToSection } = useNavigation();
 
   // Typewriter effect for animated roles
   useEffect(() => {
@@ -105,6 +108,10 @@ export const Hero: React.FC = () => {
             {/* Primary Action Button */}
             <a
               href="#projects"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('projects');
+              }}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 hover:from-cyan-400 hover:to-violet-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
               <span>View My Projects</span>
@@ -115,6 +122,10 @@ export const Hero: React.FC = () => {
             <div className="w-full sm:w-auto grid grid-cols-2 sm:flex items-center gap-2.5">
               <a
                 href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('contact');
+                }}
                 className="inline-flex items-center justify-center gap-1.5 px-4 py-3 sm:py-3.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide glass-card hover:border-cyan-500/40 text-slate-800 dark:text-slate-100 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all hover:-translate-y-0.5"
               >
                 <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-500 shrink-0" />

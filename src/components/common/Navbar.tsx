@@ -5,48 +5,36 @@ import { ThemeToggle } from './ThemeToggle';
 import { ResumePdfModal } from './ResumePdfModal';
 import { MobileDrawer } from './MobileDrawer';
 import { MobileNavDock } from './MobileNavDock';
-import { motion } from 'framer-motion';
+import { useNavigation } from '../../context/NavigationContext';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
 
+  const { activeSection, scrollToSection } = useNavigation();
+
+  // Ultra-lightweight rAF-throttled scroll listener for navbar glass styling only
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-
-      // Section scroll spy
-      const sections = [
-        'home',
-        'about',
-        'skills',
-        'projects',
-        'certifications',
-        'github',
-        'research',
-        'experience',
-        'contact'
-      ];
-      const scrollPos = window.scrollY + 200;
-
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    scrollToSection(href.replace('#', ''));
+  };
 
   return (
     <>
@@ -62,6 +50,7 @@ export const Navbar: React.FC = () => {
             {/* Logo / Brand */}
             <a
               href="#home"
+              onClick={(e) => handleNavClick(e, '#home')}
               className="group flex items-center gap-2.5 font-bold text-base sm:text-xl text-slate-900 dark:text-white transition-all"
             >
               <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-violet-600 flex items-center justify-center text-white font-extrabold shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform">
@@ -87,18 +76,15 @@ export const Navbar: React.FC = () => {
                   <a
                     key={link.href}
                     href={link.href}
-                    className={`relative px-3.5 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 ${
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className={`relative px-3.5 py-1.5 text-xs font-semibold rounded-full transition-colors duration-150 ${
                       isActive
-                        ? 'text-cyan-400 dark:text-cyan-300'
+                        ? 'text-cyan-500 dark:text-cyan-300 font-bold'
                         : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
                     {isActive && (
-                      <motion.div
-                        layoutId="activeNavIndicator"
-                        className="absolute inset-0 rounded-full bg-cyan-500/15 dark:bg-cyan-500/20 border border-cyan-500/30 -z-10"
-                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                      />
+                      <span className="absolute inset-0 rounded-full bg-cyan-500/15 dark:bg-cyan-500/20 border border-cyan-500/30 -z-10 transition-opacity duration-150" />
                     )}
                     {link.label}
                   </a>
@@ -137,7 +123,6 @@ export const Navbar: React.FC = () => {
 
       {/* Floating Bottom Mobile Navigation Dock */}
       <MobileNavDock
-        activeSection={activeSection}
         onOpenMenu={() => setMobileMenuOpen(true)}
         isDrawerOpen={mobileMenuOpen}
       />
@@ -146,7 +131,6 @@ export const Navbar: React.FC = () => {
       <MobileDrawer
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
-        activeSection={activeSection}
         onOpenResume={() => setResumeModalOpen(true)}
       />
 

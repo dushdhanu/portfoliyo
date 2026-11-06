@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
+import { NavigationProvider } from './context/NavigationContext';
 import { BackgroundGlow } from './components/common/BackgroundGlow';
 import { Navbar } from './components/common/Navbar';
 import { Hero } from './components/sections/Hero';
@@ -19,32 +20,34 @@ export const App: React.FC = () => {
 
   return (
     <ThemeProvider>
-      {/* Intro Name Splash Screen / Preloader */}
-      {loading && <Preloader onComplete={() => setLoading(false)} />}
+      <NavigationProvider>
+        {/* Intro Name Splash Screen / Preloader */}
+        {loading && <Preloader onComplete={() => setLoading(false)} />}
 
-      <div className="relative min-h-screen overflow-x-hidden bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-slate-100 selection:bg-cyan-500 selection:text-white transition-colors duration-300">
-        {/* Ambient Glowing Aura Background & Grids */}
-        <BackgroundGlow />
+        <div className="relative min-h-screen overflow-x-hidden bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-slate-100 selection:bg-cyan-500 selection:text-white transition-colors duration-300">
+          {/* Ambient Glowing Aura Background & Grids */}
+          <BackgroundGlow />
 
-        {/* Sticky Glass Navbar */}
-        <Navbar />
+          {/* Sticky Glass Navbar */}
+          <Navbar />
 
-        {/* Main Content Area */}
-        <main className="relative z-10 space-y-12 sm:space-y-20 pb-20 md:pb-0">
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Certifications />
-          <GithubActivity />
-          <Research />
-          <ExperienceEdu />
-          <Contact />
-        </main>
+          {/* Main Content Area */}
+          <main className="relative z-10 space-y-12 sm:space-y-20 pb-20 md:pb-0">
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <Certifications />
+            <GithubActivity />
+            <Research />
+            <ExperienceEdu />
+            <Contact />
+          </main>
 
-        {/* Comprehensive Footer */}
-        <Footer />
-      </div>
+          {/* Comprehensive Footer */}
+          <Footer />
+        </div>
+      </NavigationProvider>
     </ThemeProvider>
   );
 };

@@ -4,13 +4,12 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 
   /* Offset anchor scrolling so sticky glass header does not cover section headings */
   section {
-    scroll-margin-top: 5.5rem;
+    scroll-margin-top: 5rem;
   }
 
   body {

@@ -18,11 +18,11 @@ import {
 } from 'lucide-react';
 import { navLinks, personalInfo } from '../../data/portfolioData';
 import { ThemeToggle } from './ThemeToggle';
+import { useNavigation } from '../../context/NavigationContext';
 
 interface MobileDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  activeSection: string;
   onOpenResume: () => void;
 }
 
@@ -41,12 +41,12 @@ const sectionIcons: Record<string, React.ReactNode> = {
 export const MobileDrawer: React.FC<MobileDrawerProps> = ({
   isOpen,
   onClose,
-  activeSection,
   onOpenResume
 }) => {
   const drawerRef = useRef<HTMLDivElement>(null);
+  const { activeSection, scrollToSection } = useNavigation();
 
-  // Lock body scroll and listen for Escape key
+  // Lock body scroll and listen for Escape key without layout shifting
   useEffect(() => {
     if (!isOpen) return;
 
@@ -67,6 +67,16 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
     };
   }, [isOpen, onClose]);
 
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    const sectionId = href.replace('#', '');
+    onClose();
+    // Glide to section after drawer closure is initiated to prevent animation conflict
+    requestAnimationFrame(() => {
+      scrollToSection(sectionId);
+    });
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -81,19 +91,19 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             onClick={onClose}
-            className="fixed inset-0 bg-slate-950/70 backdrop-blur-md"
+            className="fixed inset-0 bg-slate-950/70 backdrop-blur-sm"
           />
 
-          {/* Frosted Glass Drawer Panel */}
+          {/* Frosted Glass Drawer Panel - Fast, GPU accelerated 220ms slide */}
           <motion.div
             ref={drawerRef}
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-            className="relative w-[85vw] max-w-[340px] h-full bg-white/95 dark:bg-slate-950/90 backdrop-blur-2xl border-l border-slate-200/80 dark:border-white/10 shadow-2xl flex flex-col justify-between z-10 overflow-hidden"
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-[85vw] max-w-[340px] h-full bg-white/95 dark:bg-slate-950/92 backdrop-blur-xl border-l border-slate-200/80 dark:border-white/10 shadow-2xl flex flex-col justify-between z-10 overflow-hidden transform-gpu"
           >
             {/* Top Header */}
             <div className="p-5 border-b border-slate-200/60 dark:border-white/10 flex items-center justify-between shrink-0">
@@ -134,8 +144,8 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
                   <a
                     key={link.href}
                     href={link.href}
-                    onClick={onClose}
-                    className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-colors duration-150 ${
                       isActive
                         ? 'bg-cyan-500/15 text-cyan-600 dark:text-cyan-300 border border-cyan-500/30 font-bold shadow-sm'
                         : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-cyan-500 dark:hover:text-white'
@@ -196,4 +206,5 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
     </AnimatePresence>
   );
 };
+
 
