@@ -13,7 +13,9 @@ import {
   CheckCircle2, 
   Code2, 
   Layers, 
-  RefreshCw 
+  RefreshCw,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 
 interface GitHubRepoApi {
@@ -43,6 +45,11 @@ export const Projects: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All Projects');
   const [isSyncing, setIsSyncing] = useState<boolean>(false);
   const [lastSynced, setLastSynced] = useState<string | null>(null);
+  const [expandedProjects, setExpandedProjects] = useState<Record<string, boolean>>({});
+
+  const toggleExpand = (id: string) => {
+    setExpandedProjects((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   // Fetch and sync GitHub Public Repositories metadata
   useEffect(() => {

@@ -8,6 +8,11 @@
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 
+  /* Offset anchor scrolling so sticky glass header does not cover section headings */
+  section {
+    scroll-margin-top: 5.5rem;
+  }
+
   body {
     @apply transition-colors duration-300;
   }
@@ -34,7 +39,7 @@
 @layer components {
   /* Dynamic Responsive Glassmorphism Styles (Pristine Light & Cyber Dark) */
   .glass-card {
-    @apply bg-white/85 dark:bg-navy-900/75 backdrop-blur-xl border border-slate-200/90 dark:border-white/[0.08] shadow-lg shadow-slate-200/50 dark:shadow-[0_10px_35px_-5px_rgba(2,6,23,0.7)] text-slate-800 dark:text-slate-100;
+    @apply bg-white/85 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/90 dark:border-white/10 shadow-lg shadow-slate-200/50 dark:shadow-[0_10px_35px_-5px_rgba(2,6,23,0.7)] text-slate-800 dark:text-slate-100;
   }
 
   .glass-card-hover {
@@ -58,6 +63,36 @@
 
   .glow-border {
     box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.25);
+  }
+
+  /* Floating Bottom Nav Glass Styling */
+  .floating-glass-dock {
+    @apply bg-white/80 dark:bg-slate-950/75 backdrop-blur-2xl border border-slate-200/70 dark:border-white/15 shadow-2xl shadow-cyan-950/20 dark:shadow-[0_10px_40px_-5px_rgba(0,0,0,0.8)];
+  }
+
+  /* Hide scrollbar for swipeable horizontal tabs */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(10px)) {
+  .glass-card {
+    background-color: rgba(2, 6, 23, 0.95) !important;
+  }
+  .light .glass-card {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+  }
+  .floating-glass-dock {
+    background-color: rgba(2, 6, 23, 0.96) !important;
+  }
+  .light .floating-glass-dock {
+    background-color: rgba(255, 255, 255, 0.96) !important;
   }
 }
 
