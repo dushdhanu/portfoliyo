@@ -69,6 +69,11 @@
     @apply bg-white/80 dark:bg-slate-950/75 backdrop-blur-2xl border border-slate-200/70 dark:border-white/15 shadow-2xl shadow-cyan-950/20 dark:shadow-[0_10px_40px_-5px_rgba(0,0,0,0.8)];
   }
 
+  /* Mobile Drawer Frosted Glass Panel */
+  .mobile-drawer-panel {
+    @apply bg-slate-50/95 dark:bg-[#020617]/95 backdrop-blur-2xl border-l border-slate-200/80 dark:border-white/10 text-slate-800 dark:text-slate-100;
+  }
+
   /* Hide scrollbar for swipeable horizontal tabs */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
