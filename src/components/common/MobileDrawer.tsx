@@ -196,3 +196,4 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
     </AnimatePresence>
   );
 };
+
