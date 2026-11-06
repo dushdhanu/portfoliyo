@@ -38,7 +38,7 @@
 @layer components {
   /* Dynamic Responsive Glassmorphism Styles (Pristine Light & Cyber Dark) */
   .glass-card {
-    @apply bg-white/85 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/90 dark:border-white/10 shadow-lg shadow-slate-200/50 dark:shadow-[0_10px_35px_-5px_rgba(2,6,23,0.7)] text-slate-800 dark:text-slate-100;
+    @apply bg-white/90 dark:bg-slate-900/70 backdrop-blur-md md:backdrop-blur-xl border border-slate-200/90 dark:border-white/10 shadow-lg shadow-slate-200/50 dark:shadow-[0_10px_35px_-5px_rgba(2,6,23,0.7)] text-slate-800 dark:text-slate-100;
   }
 
   .glass-card-hover {
