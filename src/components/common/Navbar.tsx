@@ -158,8 +158,3 @@ export const Navbar: React.FC = () => {
     </>
   );
 };
-        onClose={() => setResumeModalOpen(false)}
-      />
-    </>
-  );
-};

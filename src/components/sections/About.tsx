@@ -18,7 +18,7 @@ import {
 
 export const About: React.FC = () => {
   return (
-    <section id="about" className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
+    <section id="about" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 z-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           badge="About Me"
@@ -28,7 +28,7 @@ export const About: React.FC = () => {
         />
 
         {/* Two-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           {/* Left Column: Stylized Visual Profile Card & Quick Info Bento */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -38,7 +38,7 @@ export const About: React.FC = () => {
             className="lg:col-span-5 flex flex-col justify-between space-y-6"
           >
             {/* Visual Glassmorphic Showcase Card */}
-            <div className="glass-card rounded-3xl p-8 border border-slate-200/90 dark:border-white/10 relative overflow-hidden group">
+            <div className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200/90 dark:border-white/10 relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-all" />
 
               <div className="flex items-center gap-4 mb-6">
@@ -114,7 +114,7 @@ export const About: React.FC = () => {
             </div>
 
             {/* Core Passions Pills Bento */}
-            <div className="glass-card rounded-3xl p-6 border border-slate-200/90 dark:border-white/10">
+            <div className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-200/90 dark:border-white/10">
               <div className="flex items-center gap-2 mb-4">
                 <Sparkles className="w-4 h-4 text-cyan-500 dark:text-cyan-400" />
                 <h4 className="text-xs font-bold tracking-wider uppercase text-slate-900 dark:text-slate-200">
@@ -122,11 +122,11 @@ export const About: React.FC = () => {
                 </h4>
               </div>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {personalInfo.passions.map((passion, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1.5 rounded-xl bg-slate-100/90 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:border-cyan-500/40 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+                    className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl bg-slate-100/90 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:border-cyan-500/40 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
                   >
                     {passion}
                   </span>
@@ -144,7 +144,7 @@ export const About: React.FC = () => {
             className="lg:col-span-7 flex flex-col justify-between space-y-6"
           >
             {/* Story Paragraphs */}
-            <div className="glass-card rounded-3xl p-8 border border-slate-200/90 dark:border-white/10 space-y-4">
+            <div className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200/90 dark:border-white/10 space-y-3 sm:space-y-4">
               <div className="flex items-center gap-2 text-cyan-500 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-2">
                 <Lightbulb className="w-4 h-4" />
                 <span>The Story & Mindset</span>

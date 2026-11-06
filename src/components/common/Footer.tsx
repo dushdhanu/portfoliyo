@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-slate-200/60 dark:border-white/10 bg-slate-100/60 dark:bg-navy-950/90 py-12 px-4 sm:px-6 lg:px-8 overflow-hidden z-10">
+    <footer className="relative border-t border-slate-200/60 dark:border-white/10 bg-slate-100/60 dark:bg-navy-950/90 pt-12 pb-28 sm:pb-16 md:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden z-10">
       {/* Subtle top glow line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
 

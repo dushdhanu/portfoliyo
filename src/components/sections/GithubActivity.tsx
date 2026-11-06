@@ -120,7 +120,7 @@ export const GithubActivity: React.FC = () => {
   }, []);
 
   return (
-    <section id="github" className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
+    <section id="github" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 z-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           badge="Open Source & Version Control"
@@ -134,7 +134,7 @@ export const GithubActivity: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-6 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs flex items-center justify-between gap-4"
+            className="mt-6 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs flex flex-col sm:flex-row items-center justify-between gap-3"
           >
             <div className="flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0 text-amber-400" />
@@ -159,7 +159,7 @@ export const GithubActivity: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-8 mb-12 glass-card rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-white/10 relative overflow-hidden"
+          className="mt-6 sm:mt-8 mb-8 sm:mb-12 glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200 dark:border-white/10 relative overflow-hidden"
         >
           {/* Subtle glowing background orb */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -222,7 +222,7 @@ export const GithubActivity: React.FC = () => {
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-bold shadow-md shadow-cyan-500/20 hover:scale-105 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-bold shadow-md shadow-cyan-500/20 hover:scale-105 transition-all"
               >
                 <Github className="w-4 h-4" />
                 <span>Visit GitHub Profile</span>
@@ -233,14 +233,14 @@ export const GithubActivity: React.FC = () => {
         </motion.div>
 
         {/* 2-Column Bento: Languages Breakdown & Highlighted Repositories */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
           {/* Left Column: Dynamic Language Distribution */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-5 glass-card rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-white/10 flex flex-col justify-between"
+            className="lg:col-span-5 glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200 dark:border-white/10 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-4">

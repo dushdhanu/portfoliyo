@@ -32,7 +32,7 @@ export const Skills: React.FC = () => {
     : skillCategories.filter(cat => cat.id === selectedCategory);
 
   return (
-    <section id="skills" className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
+    <section id="skills" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 z-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           badge="Technical Competencies"
@@ -41,11 +41,11 @@ export const Skills: React.FC = () => {
           subtitle="A comprehensive toolkit across programming languages, full-stack frameworks, database engineering, and specialized security disciplines."
         />
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        {/* Filter Pills: Swipeable on mobile */}
+        <div className="flex overflow-x-auto no-scrollbar py-1 px-1 gap-1.5 sm:flex-wrap sm:justify-center mb-8 sm:mb-12 max-w-full">
           <button
             onClick={() => setSelectedCategory('all')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+            className={`shrink-0 whitespace-nowrap px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-semibold transition-all ${
               selectedCategory === 'all'
                 ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25'
                 : 'glass-card text-slate-600 dark:text-slate-300 hover:text-cyan-400'
@@ -58,7 +58,7 @@ export const Skills: React.FC = () => {
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-2 ${
+              className={`shrink-0 whitespace-nowrap px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
                 selectedCategory === cat.id
                   ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25'
                   : 'glass-card text-slate-600 dark:text-slate-300 hover:text-cyan-400'
@@ -72,7 +72,7 @@ export const Skills: React.FC = () => {
         {/* Categorized Skills Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
         >
           <AnimatePresence>
             {filteredCategories.map((category) => (
@@ -83,7 +83,7 @@ export const Skills: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className="glass-card glass-card-hover rounded-3xl p-6 border border-white/10 dark:border-white/10 flex flex-col justify-between"
+                className="glass-card glass-card-hover rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-white/10 dark:border-white/10 flex flex-col justify-between"
               >
                 <div>
                   {/* Category Header */}

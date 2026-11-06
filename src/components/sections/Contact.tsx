@@ -80,7 +80,7 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
+    <section id="contact" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 z-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           badge="Get In Touch"
@@ -89,7 +89,7 @@ export const Contact: React.FC = () => {
           subtitle="Whether discussing software engineering internship opportunities, research collaborations, or innovative tech projects, my inbox is always open."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
           {/* Left Column: Direct Contact Info Cards */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -99,7 +99,7 @@ export const Contact: React.FC = () => {
             className="lg:col-span-5 space-y-6"
           >
             {/* Contact Details Card */}
-            <div className="glass-card rounded-3xl p-8 border border-white/10 space-y-6">
+            <div className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-white/10 space-y-5 sm:space-y-6">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                 Contact Information
               </h3>
@@ -220,7 +220,7 @@ export const Contact: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7"
           >
-            <div className="glass-card rounded-3xl p-8 sm:p-10 border border-white/10 relative">
+            <div className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-10 border border-white/10 relative">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                 Send a Direct Message
               </h3>

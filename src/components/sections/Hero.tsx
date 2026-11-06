@@ -63,7 +63,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]"
           >
             Hi, I'm <br />
             <span className="gradient-text drop-shadow-[0_0_35px_rgba(6,182,212,0.3)]">
@@ -76,13 +76,13 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-4 flex items-center justify-center lg:justify-start gap-2 text-xl sm:text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-200 min-h-[40px]"
+            className="mt-3 sm:mt-4 flex items-center justify-center lg:justify-start gap-2 text-lg sm:text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-200 min-h-[36px] sm:min-h-[40px]"
           >
             <span className="text-cyan-400 font-mono">&gt;</span>
             <span className="font-mono text-cyan-400 dark:text-cyan-300">
               {displayedText}
             </span>
-            <span className="w-2.5 h-6 bg-cyan-400 inline-block animate-pulse -ml-1" />
+            <span className="w-2 sm:w-2.5 h-5 sm:h-6 bg-cyan-400 inline-block animate-pulse -ml-1" />
           </motion.div>
 
           {/* Professional Introduction */}
@@ -90,52 +90,56 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal"
+            className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal"
           >
             {personalInfo.bio}
           </motion.p>
 
-          {/* Call to Actions & Social Links */}
+          {/* Call to Actions & Social Links: Streamlined Mobile Grid Layout */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+            className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3"
           >
+            {/* Primary Action Button */}
             <a
               href="#projects"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-bold text-sm tracking-wide bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 hover:from-cyan-400 hover:to-violet-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 hover:from-cyan-400 hover:to-violet-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
               <span>View My Projects</span>
               <ChevronRight className="w-4 h-4" />
             </a>
 
-            <a
-              href="#contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-sm tracking-wide glass-card hover:border-cyan-500/40 text-slate-800 dark:text-slate-100 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all hover:-translate-y-0.5"
-            >
-              <Mail className="w-4 h-4 text-cyan-500" />
-              <span>Contact Me</span>
-            </a>
+            {/* Mobile 2-Button Row for Contact & Resume */}
+            <div className="w-full sm:w-auto grid grid-cols-2 sm:flex items-center gap-2.5">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-3 sm:py-3.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide glass-card hover:border-cyan-500/40 text-slate-800 dark:text-slate-100 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all hover:-translate-y-0.5"
+              >
+                <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-500 shrink-0" />
+                <span className="truncate">Contact</span>
+              </a>
 
-            <button
-              onClick={() => setResumeModalOpen(true)}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm tracking-wide glass-card hover:border-cyan-500/40 text-slate-800 dark:text-slate-100 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all hover:-translate-y-0.5"
-            >
-              <FileText className="w-4 h-4 text-cyan-500" />
-              <span>Resume (PDF)</span>
-            </button>
+              <button
+                onClick={() => setResumeModalOpen(true)}
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-3 sm:py-3.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide glass-card hover:border-cyan-500/40 text-slate-800 dark:text-slate-100 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all hover:-translate-y-0.5"
+              >
+                <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-500 shrink-0" />
+                <span className="truncate">Resume (PDF)</span>
+              </button>
+            </div>
 
             {/* Social Icons */}
-            <div className="flex items-center gap-3 mt-2 sm:mt-0 sm:ml-2">
+            <div className="flex items-center justify-center gap-2.5 mt-1 sm:mt-0 sm:ml-2">
               <a
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Profile"
-                className="p-3 rounded-xl glass-card hover:border-cyan-500/40 hover:text-cyan-400 text-slate-700 dark:text-slate-200 transition-all hover:scale-110"
+                className="p-2.5 sm:p-3 rounded-xl glass-card hover:border-cyan-500/40 hover:text-cyan-400 text-slate-700 dark:text-slate-200 transition-all hover:scale-110"
               >
-                <Github className="w-5 h-5" />
+                <Github className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
 
               <a
@@ -143,9 +147,9 @@ export const Hero: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
-                className="p-3 rounded-xl glass-card hover:border-cyan-500/40 hover:text-cyan-400 text-slate-700 dark:text-slate-200 transition-all hover:scale-110"
+                className="p-2.5 sm:p-3 rounded-xl glass-card hover:border-cyan-500/40 hover:text-cyan-400 text-slate-700 dark:text-slate-200 transition-all hover:scale-110"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
             </div>
           </motion.div>
@@ -157,7 +161,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative w-72 sm:w-80 md:w-96 flex items-center justify-center"
+            className="relative w-64 sm:w-80 md:w-96 flex items-center justify-center"
           >
             {/* Glowing Concentric Halo Rings */}
             <div className="absolute -inset-4 rounded-[2.5rem] border border-cyan-500/20 animate-spin-slow pointer-events-none" />
@@ -165,8 +169,8 @@ export const Hero: React.FC = () => {
             <div className="absolute inset-4 rounded-3xl bg-gradient-to-tr from-cyan-500/25 via-blue-500/15 to-violet-600/25 blur-3xl pointer-events-none" />
 
             {/* Central Portrait Showcase Card */}
-            <div className="relative w-64 sm:w-72 md:w-80 rounded-3xl p-2 bg-gradient-to-b from-cyan-500/40 via-slate-800/60 to-violet-600/40 shadow-[0_0_50px_rgba(6,182,212,0.3)] backdrop-blur-xl group">
-              <div className="relative w-full h-80 sm:h-96 rounded-[22px] overflow-hidden bg-navy-950">
+            <div className="relative w-56 sm:w-72 md:w-80 rounded-3xl p-2 bg-gradient-to-b from-cyan-500/40 via-slate-800/60 to-violet-600/40 shadow-[0_0_50px_rgba(6,182,212,0.3)] backdrop-blur-xl group">
+              <div className="relative w-full h-72 sm:h-96 rounded-[22px] overflow-hidden bg-navy-950">
                 {/* User Portrait Image */}
                 <img
                   src={personalInfo.avatar || `${import.meta.env.BASE_URL}my.jpeg`}

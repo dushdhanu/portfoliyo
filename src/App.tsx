@@ -30,7 +30,7 @@ export const App: React.FC = () => {
         <Navbar />
 
         {/* Main Content Area */}
-        <main className="relative z-10 space-y-12 sm:space-y-20">
+        <main className="relative z-10 space-y-12 sm:space-y-20 pb-20 md:pb-0">
           <Hero />
           <About />
           <Skills />

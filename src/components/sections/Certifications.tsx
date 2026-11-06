@@ -38,7 +38,7 @@ export const Certifications: React.FC = () => {
   };
 
   return (
-    <section id="certifications" className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
+    <section id="certifications" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 z-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           badge="Verified Competencies"
@@ -48,13 +48,13 @@ export const Certifications: React.FC = () => {
         />
 
         {/* Category Filters & LinkedIn Sync Bar */}
-        <div className="mt-8 mb-12 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl glass-card border border-slate-200 dark:border-white/10">
+        <div className="mt-6 sm:mt-8 mb-8 sm:mb-12 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex overflow-x-auto no-scrollbar py-1 px-1.5 gap-1.5 sm:flex-wrap sm:justify-center rounded-2xl glass-card border border-slate-200 dark:border-white/10 max-w-full">
             {CATEGORIES.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
+                className={`shrink-0 whitespace-nowrap px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
                   selectedCategory === category
                     ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/25 scale-105'
                     : 'text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-300 hover:bg-slate-100 dark:hover:bg-white/5'
@@ -70,7 +70,7 @@ export const Certifications: React.FC = () => {
             href={personalInfo.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl glass-card border border-cyan-500/30 text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:border-cyan-500 hover:scale-105 transition-all shadow-sm"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl glass-card border border-cyan-500/30 text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:border-cyan-500 hover:scale-105 transition-all shadow-sm"
           >
             <Linkedin className="w-4 h-4 text-[#0077b5]" />
             <span>Verify on LinkedIn Profile</span>
@@ -80,7 +80,7 @@ export const Certifications: React.FC = () => {
 
         {/* Certifications Grid */}
         {filteredCertificates.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             <AnimatePresence mode="popLayout">
               {filteredCertificates.map((cert, index) => (
                 <motion.div
@@ -90,7 +90,7 @@ export const Certifications: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="glass-card glass-card-hover rounded-3xl p-6 border border-slate-200/80 dark:border-white/10 flex flex-col justify-between group relative overflow-hidden"
+                  className="glass-card glass-card-hover rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-200/80 dark:border-white/10 flex flex-col justify-between group relative overflow-hidden"
                 >
                   {/* Glowing hover accent */}
                   <div className="absolute top-0 right-0 w-36 h-36 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-all" />

@@ -172,7 +172,7 @@ export const ResumePdfModal: React.FC<ResumePdfModalProps> = ({ isOpen, onClose 
               <div
                 id="printable-cv"
                 ref={resumeRef}
-                className="w-full max-w-[800px] bg-white text-slate-900 p-6 sm:p-10 md:p-12 rounded-xl shadow-2xl border border-slate-200/80 space-y-6 leading-relaxed font-sans text-left"
+                className="w-full max-w-[800px] bg-white text-slate-900 p-4 sm:p-10 md:p-12 rounded-xl shadow-2xl border border-slate-200/80 space-y-5 sm:space-y-6 leading-relaxed font-sans text-left"
               >
                 {/* CV Header */}
                 <header className="border-b-2 border-slate-800 pb-5 flex flex-col md:flex-row md:items-end justify-between gap-4">

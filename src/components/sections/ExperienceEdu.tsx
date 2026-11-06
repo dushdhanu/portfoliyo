@@ -12,7 +12,7 @@ export const ExperienceEdu: React.FC = () => {
     : timelineData.filter(item => item.category === filter);
 
   return (
-    <section id="experience" className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
+    <section id="experience" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 z-10">
       <div className="max-w-5xl mx-auto">
         <SectionHeader
           badge="Academic & Career Path"
@@ -22,10 +22,10 @@ export const ExperienceEdu: React.FC = () => {
         />
 
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="flex overflow-x-auto no-scrollbar py-1 px-1 gap-1.5 sm:flex-wrap sm:justify-center mb-8 sm:mb-12 max-w-full">
           <button
             onClick={() => setFilter('all')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+            className={`shrink-0 whitespace-nowrap px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-semibold transition-all ${
               filter === 'all'
                 ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25'
                 : 'glass-card text-slate-600 dark:text-slate-300 hover:text-cyan-400'
@@ -36,7 +36,7 @@ export const ExperienceEdu: React.FC = () => {
 
           <button
             onClick={() => setFilter('education')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
+            className={`shrink-0 whitespace-nowrap px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
               filter === 'education'
                 ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25'
                 : 'glass-card text-slate-600 dark:text-slate-300 hover:text-cyan-400'
@@ -48,7 +48,7 @@ export const ExperienceEdu: React.FC = () => {
 
           <button
             onClick={() => setFilter('experience')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
+            className={`shrink-0 whitespace-nowrap px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
               filter === 'experience'
                 ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25'
                 : 'glass-card text-slate-600 dark:text-slate-300 hover:text-cyan-400'
@@ -60,7 +60,7 @@ export const ExperienceEdu: React.FC = () => {
         </div>
 
         {/* Vertical Timeline */}
-        <div className="relative border-l-2 border-slate-200 dark:border-white/10 ml-4 sm:ml-8 md:ml-32 space-y-10 pl-6 sm:pl-8">
+        <div className="relative border-l-2 border-slate-200 dark:border-white/10 ml-3 sm:ml-8 md:ml-32 space-y-8 sm:space-y-10 pl-5 sm:pl-8">
           {filteredTimeline.map((item, index) => (
             <motion.div
               key={item.id}
@@ -71,14 +71,14 @@ export const ExperienceEdu: React.FC = () => {
               className="relative group"
             >
               {/* Timeline Node Icon Indicator */}
-              <div className="absolute -left-[35px] sm:-left-[43px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-cyan-400 flex items-center justify-center text-cyan-400 shadow-md shadow-cyan-500/20 group-hover:scale-110 transition-transform">
-                {item.category === 'education' && <GraduationCap className="w-4 h-4" />}
-                {item.category === 'experience' && <Briefcase className="w-4 h-4 text-violet-400" />}
-                {item.category === 'certification' && <Award className="w-4 h-4 text-amber-400" />}
+              <div className="absolute -left-[31px] sm:-left-[43px] top-1.5 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-900 border-2 border-cyan-400 flex items-center justify-center text-cyan-400 shadow-md shadow-cyan-500/20 group-hover:scale-110 transition-transform">
+                {item.category === 'education' && <GraduationCap className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
+                {item.category === 'experience' && <Briefcase className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-violet-400" />}
+                {item.category === 'certification' && <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />}
               </div>
 
               {/* Timeline Card Content */}
-              <div className="glass-card glass-card-hover rounded-2xl p-6 sm:p-7 border border-white/10 relative">
+              <div className="glass-card glass-card-hover rounded-2xl p-4 sm:p-7 border border-white/10 relative">
                 {/* Meta Header */}
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                   <span className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">

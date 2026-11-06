@@ -6,7 +6,7 @@ import { ShieldAlert, Cpu, Lock, Network, BookOpen, Layers, CheckCircle } from '
 
 export const Research: React.FC = () => {
   return (
-    <section id="research" className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
+    <section id="research" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 z-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           badge="Academic Research Focus"
@@ -21,22 +21,22 @@ export const Research: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="glass-card rounded-3xl p-6 sm:p-10 border border-cyan-500/20 relative overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.1)]"
+          className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-10 border border-cyan-500/20 relative overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.1)]"
         >
           {/* Top subtle decorative neon glow */}
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
 
           {/* Research Header Banner */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-slate-200/50 dark:border-white/10">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 sm:pb-8 border-b border-slate-200/50 dark:border-white/10">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-semibold uppercase tracking-wider mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-semibold uppercase tracking-wider mb-2.5">
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>{researchProject.domain}</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white leading-tight">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white leading-tight">
                 {researchProject.title}
               </h3>
-              <p className="text-sm font-medium text-cyan-400 mt-1">
+              <p className="text-xs sm:text-sm font-medium text-cyan-400 mt-1">
                 {researchProject.subtitle}
               </p>
             </div>
