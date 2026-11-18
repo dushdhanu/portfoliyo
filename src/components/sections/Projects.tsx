@@ -32,6 +32,8 @@ interface GitHubRepoApi {
   fork: boolean;
 }
 
+const HIDDEN_PROJECT_REPOS = new Set(['madinclass4', 'madinclass2']);
+
 const CATEGORIES = [
   'All Projects',
   'Web Development',
@@ -101,6 +103,7 @@ export const Projects: React.FC = () => {
 
         // Discover any additional public repos belonging to dushdhanu
         const additionalRepos: Project[] = repos
+          .filter((r) => !HIDDEN_PROJECT_REPOS.has(r.name.toLowerCase().replace(/[-_]/g, '')))
           .filter((r) => !r.fork && !updatedCurated.some((c) => c.githubUrl.toLowerCase().includes(r.name.toLowerCase())))
           .map((r) => {
             // Categorize based on language/topics

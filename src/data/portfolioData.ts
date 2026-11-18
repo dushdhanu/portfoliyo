@@ -71,6 +71,41 @@ export const timelineData: TimelineEntry[] = [
     isPlaceholder: false
   },
   {
+    id: "edu-ibsl-dbf",
+    category: "education",
+    title: "Diploma in Banking and Finance (DBF)",
+    institution: "Institute of Bankers of Sri Lanka (IBSL)",
+    period: "2026 — Results pending",
+    location: "Sri Lanka",
+    description: "Sat the first-semester DBF examination in the September 2026 examination session. Results have not yet been released.",
+    bullets: [
+      "Survey of Financial Systems",
+      "Elements of Banking and Non-bank Finance",
+      "Accounting and Auditing",
+      "IT, Digital Banking and Settlements"
+    ]
+  },
+  {
+    id: "edu-ims-english",
+    category: "education",
+    title: "English Certificate Course",
+    institution: "IMS Campus",
+    period: "Completed",
+    location: "Sri Lanka",
+    description: "Successfully completed an English certificate course at IMS Campus.",
+    bullets: []
+  },
+  {
+    id: "edu-ss-english",
+    category: "education",
+    title: "English Certificate Course",
+    institution: "SS English Academy",
+    period: "Completed",
+    location: "Sri Lanka",
+    description: "Successfully completed an English certificate course at SS English Academy.",
+    bullets: []
+  },
+  {
     id: "exp-1",
     category: "experience",
     title: "Software Engineering Intern / Trainee (Open for Opportunities)",

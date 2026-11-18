@@ -87,6 +87,33 @@ export const resumeData: ResumeData = {
         "Focused academic foundation in Mathematics, Information Technology, and Physical Sciences",
         "Active participant in ICT societies and algorithmic problem-solving competitions"
       ]
+    },
+    {
+      id: "edu-ibsl-dbf",
+      degree: "Diploma in Banking and Finance (DBF)",
+      institution: "Institute of Bankers of Sri Lanka (IBSL)",
+      location: "Sri Lanka",
+      period: "2026",
+      bullets: [
+        "Sat the first-semester examination in the September 2026 session; results pending",
+        "Subjects: Survey of Financial Systems; Elements of Banking and Non-bank Finance; Accounting and Auditing; IT, Digital Banking and Settlements"
+      ]
+    },
+    {
+      id: "edu-ims-english",
+      degree: "English Certificate Course",
+      institution: "IMS Campus",
+      location: "Sri Lanka",
+      period: "Completed",
+      bullets: ["Successfully completed an English certificate course"]
+    },
+    {
+      id: "edu-ss-english",
+      degree: "English Certificate Course",
+      institution: "SS English Academy",
+      location: "Sri Lanka",
+      period: "Completed",
+      bullets: ["Successfully completed an English certificate course"]
     }
   ],
   skills: [

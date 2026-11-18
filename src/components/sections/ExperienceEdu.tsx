@@ -18,7 +18,7 @@ export const ExperienceEdu: React.FC = () => {
           badge="Academic & Career Path"
           title="Education &"
           highlightedText="Experience"
-          subtitle="My academic foundation in Computer Science and prospective industry trajectories, structured with transparent milestones."
+          subtitle="My education in Computer Science, Banking and Finance, and English, alongside my career goals and academic milestones."
         />
 
         {/* Category Filter Tabs */}
