@@ -23,7 +23,7 @@ export const personalInfo: PersonalInfo = {
   phone: undefined, // Add your verified phone number here
   github: "https://github.com/dushdhanu",
   linkedin: "https://www.linkedin.com/in/dushmanthi-dhananjana/",
-  resumeUrl: "#resume-placeholder", // [EDITABLE: Replace with Google Drive or direct PDF link if preferred]
+  resumeUrl: import.meta.env.BASE_URL + "Dushmanthi_Dhananjana_ATS_CV.pdf",
   careerGoal: "Become a professional Software Engineer and build innovative, high-impact software solutions that solve real-world problems.",
   passions: [
     "Software Engineering",
