@@ -172,18 +172,6 @@ export const resumeData: ResumeData = {
       ]
     },
     {
-      id: "proj-3",
-      title: "SOC-Live Security Monitoring System",
-      category: "Cybersecurity & Systems",
-      technologies: ["Python", "Linux", "Bash", "Log Analysis", "Network Telemetry"],
-      githubUrl: "https://github.com/dushdhanu/soc-live",
-      bullets: [
-        "Developed Security Operations Center live event monitoring dashboard for real-time telemetry and log ingestion",
-        "Implemented log aggregation and severity-based incident triage classification following security best practices",
-        "Designed defensive architecture aligned with fundamental network defense and Zero Trust principles"
-      ]
-    },
-    {
       id: "proj-4",
       title: "MedScan AI - Healthcare Assistant",
       category: "Mobile Healthcare Application",

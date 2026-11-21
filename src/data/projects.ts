@@ -36,23 +36,6 @@ export const projects: Project[] = [
     isPlaceholder: false
   },
   {
-    id: "soc-live",
-    title: "SOC-Live Security Monitoring System",
-    category: "Cybersecurity & Systems",
-    description: "Security Operations Center (SOC) live monitoring platform for log ingestion, threat detection, event correlation, and defensive telemetry visualization.",
-    highlights: [
-      "Real-time event streaming and anomalous telemetry detection dashboard",
-      "Log aggregation and severity-based incident triage classification",
-      "Defensive security architecture aligned with core network defense principles"
-    ],
-    technologies: ["Python", "Linux", "Bash", "Networking", "Log Analysis"],
-    githubUrl: "https://github.com/dushdhanu/soc-live",
-    // No liveUrl until a verified public cloud deployment is created
-    primaryLanguage: "Python",
-    isFeatured: true,
-    isPlaceholder: false
-  },
-  {
     id: "medscan-ai",
     title: "MedScan AI - Healthcare Assistant",
     category: "Mobile Applications",

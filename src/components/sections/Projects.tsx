@@ -32,7 +32,7 @@ interface GitHubRepoApi {
   fork: boolean;
 }
 
-const HIDDEN_PROJECT_REPOS = new Set(['madinclass4', 'madinclass2']);
+const HIDDEN_PROJECT_REPOS = new Set(['madinclass4', 'madinclass2', 'soclive']);
 
 const CATEGORIES = [
   'All Projects',
